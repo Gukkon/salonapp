@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+}
+
+/* Error styles */
+.error-con {
+    height: 550px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    margin-top: auto;
+}
+
+
+/* Navbar styles */
+
+.navbar-col {
+    background: teal;
+}
+
+.nav-item {
+    font-size: 20px;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.nav-link {
+    margin-left: 30px;
+    color: aliceblue;
+}
