@@ -39,3 +39,69 @@ footer {
     margin-left: 30px;
     color: aliceblue;
 }
+
+
+.opacity {
+    opacity: 0.8;
+}
+
+.homeimg {
+    background:url(./images/showcaseimg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+ .hm-container {
+    width: 100%;
+    height: 85vh;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.homelog {
+    padding: 20px;
+    border-radius: 20px;
+    background-color: azure;
+    text-align: center;
+    width: 400px;
+    margin-right: 100px;
+}
+
+.homelog h1, p, h4 {
+    margin-top: 10px;
+}
+
+.homelog button {
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* media queries */
+@media (max-width: 820px) {
+    .homeimg {
+        background-position: center;
+    }
+
+    .hm-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .homelog {
+        margin-left: 60px;
+    }
+
+}
