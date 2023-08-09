@@ -1,13 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-</head>
-<body>
 
 <div class="hm-container">
     <div class="homelog">
@@ -15,14 +9,13 @@
         <p>We hope you enjoy your stay with us here at the Body Reform Spa! <br> where you can expect a truly professional experience indulging in the many treatments we have on offer.</p>
         <p>Please use this app to book your treatments with us during your stay.</p>
         <h4>Remember..Your in control</h4>
-        <button class="hm-btn">Register Now</button>
-        <button class="hm-btn">Log In</button>
+        <button class="hm-btn"><a href="{{ url_for('register') }}">Register Now</a></button>
+        <button class="hm-btn"><a href="{{ url_for('login') }}">Log In</a></button>
     </div>
 </div>
 
 
-</body>
-</html>
+
 
 
 

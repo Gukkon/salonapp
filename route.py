@@ -38,3 +38,8 @@ def account():
 @app.route('/logout')
 def logout():
     return render_template("logout.html")
+
+
+@app.route('/bookings')
+def bookings():
+    return render_template("bookings.html")

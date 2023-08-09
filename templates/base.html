@@ -5,61 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Playfair+Display&family=Tangerine&family=Tiro+Tamil&display=swap" rel="stylesheet">
+
+    <!-- <link rel="stylesheet" type="text/css" href="/static/styles.css"> -->
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
 
     <title>Body Reform Spa</title>
-    
+
 </head>
-<body class="opacity homeimg">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary no-padding">
-
-        <div class="container-fluid navbar-col">
-          <a class="navbar-brand" href="{{ url_for('index') }}">Body Reform Spa</a>
-
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collapse navbar-collapse margin-left" id="navbarTogglerDemo02">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('index') }}">Home</a>
-              </li>
-              <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('register') }}">Register</a>
-              </li>
-              <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('login') }}">Login</a>
-              </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('account') }}">Account</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a>
-                </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+<body class="homeimg">
+    {% include 'navbar.html' %}
 
     {% block content %}
 
     {% endblock %}
 
-      <!-- footer -->
+    {% include 'footer.html' %}
 
-      <footer class="text-center text-white fixed-bottom" style="background-color: teal;">
-        <!-- Grid container -->
-        <div class="container p-4"></div>
-        <!-- Grid container -->
 
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-          © 2020 Copyright:
-          <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-        </div>
-        <!-- Copyright -->
-      </footer>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
