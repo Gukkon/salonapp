@@ -1,7 +1,5 @@
-from flask import Flask, render_template, flash
-from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
-from wtforms.validators import DataRequired
+from flask import Flask, render_template, flash, url_for
+from forms import RegistrationForm, LoginForm
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -9,6 +7,7 @@ app = Flask(__name__)
 # Add Database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 # Secret Key
+app.config['SECRET_KEY'] = 'c2b7b27b43f8e51ec21064a1cf61d961'
 
 # Initialize The Database
 db = SQLAlchemy(app)
@@ -21,9 +20,14 @@ class Users(db.Model):
     email = db.Column(db.String(120), nullable=False, unique=True)
     date_added = db.Column(db.DateTime, default=datetime.utcnow)
 
-    #Create A String
+# Create A String
     def __repr__(self):
         return '<Name %r>' % self.name
+
+
+
+
+
 
 # Error Pages
 @app.errorhandler(404)
@@ -37,19 +41,22 @@ def page_not_found(e):
 
 
 # All html webpages
-@app.route('/', methods=['GET','POST'])
+@app.route('/')
 def index():
     return render_template("index.html")
 
 
 @app.route('/login', methods=['GET','POST'])
 def login():
-    return render_template("login.html")
+    form = LoginForm()
+    return render_template("index.html", title='Login', form=form)
 
 
-@app.route('/register')
+
+@app.route('/register', methods=['GET','POST'])
 def register():
-    return render_template("register.html")
+    form = RegistrationForm()
+    return render_template("register.html", title='Register', form=form)
 
 
 @app.route('/account')

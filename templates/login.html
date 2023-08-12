@@ -6,9 +6,12 @@
         <br>
             <input type="password" name="password" placeholder="Password">
         <br>
-            <input type="submit" placeholder="submit" value="Log In">
+            <input class="btn btn-dark" type="submit" placeholder="submit" value="Log In">
         <br>
         </form>
+
+        <p class="reg-link">Not registered yet? Please <a href="{{ url_for('register') }}">REGISTER HERE</a> to begin</p>
+
     </div>
 
 {% endblock %}
