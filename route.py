@@ -7,7 +7,7 @@ app = Flask(__name__)
 # Add Database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 # Secret Key
-app.config['SECRET_KEY'] = 'c2b7b27b43f8e51ec21064a1cf61d961'
+
 
 # Initialize The Database
 db = SQLAlchemy(app)
