@@ -1,4 +1,4 @@
-from flask import Flask, render_template, flash, url_for
+from flask import Flask, render_template, flash, redirect, url_for
 from forms import RegistrationForm, LoginForm
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -25,10 +25,6 @@ class Users(db.Model):
         return '<Name %r>' % self.name
 
 
-
-
-
-
 # Error Pages
 @app.errorhandler(404)
 def page_not_found(e):
@@ -40,22 +36,39 @@ def page_not_found(e):
     return render_template("500.html"), 500
 
 
-# All html webpages
-@app.route('/')
+# All html webpages (SORT THE IF STATEMENT TO REDIRECT TO ACCOUNT PAGE!)
+@app.route('/', methods=['GET','POST'])
 def index():
-    return render_template("index.html")
-
-
-@app.route('/login', methods=['GET','POST'])
-def login():
     form = LoginForm()
-    return render_template("index.html", title='Login', form=form)
+    if form.validate_on_submit():
+        if form.email.data == 'admin@blog.com' and form.password.data == 'password':
+            flash('You have been logged in!', 'success')
+            return redirect(url_for('index'))
+        else:
+            flash('Login Unsuccessful. Please check username and password', 'danger')
+    return render_template("index.html", title='Welcome', form=form)
+
+
+# @app.route('/login')
+# def login():
+#     return render_template("login.html")
 
 
 
 @app.route('/register', methods=['GET','POST'])
 def register():
     form = RegistrationForm()
+    if form.validate_on_submit():
+        # user = Users.query.filter_by(email=form.email.data).first
+        # if user is None:
+        #     username = Users(name=form.username.data, email=form.email.data)
+        #     db.session.add(user)
+        #     db.session.commit()
+        # username = form.username.data
+        # form.username.data = ''
+        # form.email.data = ''
+        flash(f'Account created for {form.username.data}!', 'success')
+        return redirect(url_for('index'))
     return render_template("register.html", title='Register', form=form)
 
 
