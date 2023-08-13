@@ -1,5 +1,5 @@
 from datetime import datetime
-from Salonapp import db
+from Salon_app import db
 
 
 
