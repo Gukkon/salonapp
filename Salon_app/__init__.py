@@ -13,3 +13,4 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 db = SQLAlchemy(app)
 # app.app_context().push()
 
+from Salon_app import routes
