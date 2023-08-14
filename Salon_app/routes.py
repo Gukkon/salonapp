@@ -1,7 +1,8 @@
 from flask import render_template, flash, redirect, url_for
-from Salon_app import app
-from Salon_app.forms import RegistrationForm, LoginForm
+from Salon_app import app, db, bcrypt
+from Salon_app.forms import RegistrationForm, LoginForm, ValidationError
 from Salon_app.models import User
+from flask_login import login_user, current_user, logout_user, login_required
 
 
 
@@ -19,10 +20,13 @@ def page_not_found(e):
 # All html webpages (SORT THE IF STATEMENT TO REDIRECT TO ACCOUNT PAGE!)
 @app.route('/', methods=['GET','POST'])
 def index():
+    if current_user.is_authenticated:
+        return redirect(url_for('account'))
     form = LoginForm()
     if form.validate_on_submit():
-        if form.username.data == 'admin@blog.com' and form.password.data == 'password':
-            flash('You have been logged in!', 'success')
+        user = User.query.filter_by(username=form.username.data).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            login_user(user, remember=form.remember.data)
             return redirect(url_for('account'))
         else:
             flash('Login Unsuccessful. Please check username and password', 'danger')
@@ -37,28 +41,31 @@ def index():
 
 @app.route('/register', methods=['GET','POST'])
 def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('account'))
     form = RegistrationForm()
+    # Add user to database
     if form.validate_on_submit():
-        # user = Users.query.filter_by(email=form.email.data).first
-        # if user is None:
-        #     username = Users(name=form.username.data, email=form.email.data)
-        #     db.session.add(user)
-        #     db.session.commit()
-        # username = form.username.data
-        # form.username.data = ''
-        # form.email.data = ''
-        flash(f'Account created for {form.username.data}!', 'success')
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user = User(name=form.name.data, username=form.username.data, email=form.email.data, password=hashed_password)
+        db.session.add(user)
+        db.session.commit()
+        flash('Your account has been created! You can now log in', 'success')
         return redirect(url_for('index'))
     return render_template("register.html", title='Register', form=form)
 
 
+
 @app.route('/account')
 def account():
-    return render_template("account.html")
+    return render_template("account.html", title='Welcome')
 
 
 @app.route('/logout')
 def logout():
+    logout_user()
+    flash('You have successfully logged out', 'success')
+    return redirect(url_for('index'))
     return render_template("logout.html")
 
 
