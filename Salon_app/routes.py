@@ -1,3 +1,4 @@
+import os
 from flask import render_template, flash, redirect, url_for
 from Salon_app import app, db, bcrypt
 from Salon_app.forms import RegistrationForm, LoginForm, ValidationError

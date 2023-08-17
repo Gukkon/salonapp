@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary no-padding">
+<nav class="navbar navbar-expand-lg bg-body-tertiary no-padding navbar-static-top">
 
     <div class="container-fluid navbar-col">
       <a class="navbar-brand" href="{{ url_for('index') }}">Body Reform Spa</a>
@@ -12,6 +12,9 @@
           {% if current_user.is_authenticated %}
           <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('account') }}">Account</a>
+          </li>
+          <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('bookings') }}">Book Now</a>
           </li>
           <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a>

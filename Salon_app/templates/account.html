@@ -2,6 +2,31 @@
 
 {% block content %}
 
-    <h1>Welcome to the Account Page</h1>
+<div class="main-acc-cont">
+    <div class="welc-user backgrd">
+        <div class="wel-msg">
+            <h1>Welcome {{ current_user.username }}!</h1>
+            <p>Please use this account page to keep track or book any treatments you would like to experience with us.</p>
+            <p>This page also holds your account information that includes you customer ID. That ID  will help our staff members to personally know that we are communicating with you and no one else within the complex during your stay</p>
+        </div>
+    </div>
+    <div class="acc-info backgrd">
+        <div class="acc-details">
+            <h1>Account Info</h1>
+            <p><strong>Customer ID:</strong> {{ current_user.id }} </p>
+            <p><strong>Name:</strong> {{ current_user.name }} </p>
+            <p><strong>Username:</strong> {{ current_user.username }} </p>
+            <p><strong>Email:</strong> {{ current_user.email }} </p>
+            <p><strong>Date Joined:</strong> {{ current_user.date_added }} </p>
+        </div>
+    </div>
+    <div class="bk-select backgrd sidebar">
+        <div class="bk-view">
+            <h1>Treatments</h1>
+            <h5>No treatments booked</h5>
+            <button class="btn btn-dark"><a href="{{ url_for('bookings') }}">Book Treatments</a></button>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
