@@ -2,6 +2,75 @@
 
 {% block content %}
 
-    <h1>Welcome to the Bookings Page</h1>
+    <div class="bk-wrapper">
+        <h1>Book your luxurious treatment today</h1>
+        <div class="bk-container">
+                <div class="tabs">
+                    <h4 class="bk-tab t1" id="">Day</h4>
+                    <h4 class="bk-tab t2" id="">Time</h4>
+                    <h4 class="bk-tab t3" id="">Treatment Type</h4>
+                    <h4 class="bk-tab t4" id="">Treatment Itself</h4>
+                    <h4 class="bk-tab t5" id="">Number of Clients</h4>
+                    <h4 class="bk-tab t6" id="">Confirmation</h4>
+                </div>
+            <div class="bk-contents">
+                <div class="js-book-info">
+
+                    <!-- Day -->
+
+                    <div id="days">
+                        <div class="day-title">
+                            <h4>Please select a day</h4>
+                        </div>
+                        <form class="day-list" name="day-form" action="" method="post">
+                            <input id="" type="submit" name="Monday" value="Monday">
+                            <input id="" type="submit" name="Tuesday" value="Tuesday">
+                            <input id="" type="submit" name="Wednesday" value="Wednesday">
+                            <input id="" type="submit" name="Thursday" value="Thursday">
+                            <input id="" type="submit" name="Friday" value="Friday">
+                            <input id="" type="submit" name="Saturday" value="Saturday">
+                            <input id="" type="submit" name="Sunday" value="Sunday">
+                        </form>
+                    </div>
+
+                    <!-- time -->
+                    <div id="time">
+                        <div class="title">
+                            <h4>Please select a time</h4>
+                        </div>
+                        <form class="time-list" name="time-form" action="" method="post">
+                            <select class="form-select" name="morning" id="morning">
+                                <option selected>Morning</option>
+                                <option value="8am-9am">8am-9am</option>
+                                <option value="9am-10am">9am-10am</option>
+                                <option value="10am-11am">10am-11am</option>
+                                <option value="11am-12pm">11am-12pm</option>
+                            </select>
+                            <select class="form-select" name="afternoon" id="afternoon">
+                                <option selected>Afternoon</option>
+                                <option value="12pm-1pm">12pm-1pm</option>
+                                <option value="1pm-2pm">1pm-2pm</option>
+                                <option value="2pm-3pm">2pm-3pm</option>
+                                <option value="4pm-5pm">4pm-5pm</option>
+                            </select>
+                            <select class="form-select" name="morning" id="morning">
+                                <option selected>Morning</option>
+                                <option value="6pm-7pm">6pm-7pm</option>
+                                <option value="7pm-8pm">7pm-8pm</option>
+                                <option value="8pm-9pm">8pm-9pm</option>
+                                <option value="9pm-10pm">9pm-10pm</option>
+                            </select>
+                        </form>
+                    </div>
+
+
+
+
+            </div>
+            <div class="btn-cont">
+                <button class="nxt-btn btn btn-dark" id="cont-bk">Continue</button>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
