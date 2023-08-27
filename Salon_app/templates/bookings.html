@@ -2,75 +2,87 @@
 
 {% block content %}
 
-    <div class="bk-wrapper">
-        <h1>Book your luxurious treatment today</h1>
-        <div class="bk-container">
-                <div class="tabs">
-                    <h4 class="bk-tab t1" id="">Day</h4>
-                    <h4 class="bk-tab t2" id="">Time</h4>
-                    <h4 class="bk-tab t3" id="">Treatment Type</h4>
-                    <h4 class="bk-tab t4" id="">Treatment Itself</h4>
-                    <h4 class="bk-tab t5" id="">Number of Clients</h4>
-                    <h4 class="bk-tab t6" id="">Confirmation</h4>
+<div class="form-wrapper">
+    <div class="form-container">
+        <form class="form-content" action="" name="booking" method="post">
+            <div class="fm-title">
+                <h1>Appointment Request Form</h1>
+                <h6>For all requests, please fill out the form below</h6>
+                <hr>
+            </div>
+            <div class="fm-input">
+                <div class="days">
+                    <h5><strong>What day is best for you?</strong></h5>
+                    <input type="checkbox" value="Monday"> Monday
+                    <input type="checkbox" value="Tuesday"> Tuesday
+                    <input type="checkbox" value="Wednesday"> Wednesday
+                    <input type="checkbox" value="Thursday"> Thursday
+                    <input type="checkbox" value="Friday"> Friday
+                    <input type="checkbox" value="Saturday"> Saturday
+                    <input type="checkbox" value="Sunday"> Sunday
                 </div>
-            <div class="bk-contents">
-                <div class="js-book-info">
+                <hr>
 
-                    <!-- Day -->
-
-                    <div id="days">
-                        <div class="day-title">
-                            <h4>Please select a day</h4>
-                        </div>
-                        <form class="day-list" name="day-form" action="" method="post">
-                            <input id="" type="submit" name="Monday" value="Monday">
-                            <input id="" type="submit" name="Tuesday" value="Tuesday">
-                            <input id="" type="submit" name="Wednesday" value="Wednesday">
-                            <input id="" type="submit" name="Thursday" value="Thursday">
-                            <input id="" type="submit" name="Friday" value="Friday">
-                            <input id="" type="submit" name="Saturday" value="Saturday">
-                            <input id="" type="submit" name="Sunday" value="Sunday">
-                        </form>
-                    </div>
-
-                    <!-- time -->
-                    <div id="time">
-                        <div class="title">
-                            <h4>Please select a time</h4>
-                        </div>
-                        <form class="time-list" name="time-form" action="" method="post">
-                            <select class="form-select" name="morning" id="morning">
-                                <option selected>Morning</option>
-                                <option value="8am-9am">8am-9am</option>
-                                <option value="9am-10am">9am-10am</option>
-                                <option value="10am-11am">10am-11am</option>
-                                <option value="11am-12pm">11am-12pm</option>
-                            </select>
-                            <select class="form-select" name="afternoon" id="afternoon">
-                                <option selected>Afternoon</option>
-                                <option value="12pm-1pm">12pm-1pm</option>
-                                <option value="1pm-2pm">1pm-2pm</option>
-                                <option value="2pm-3pm">2pm-3pm</option>
-                                <option value="4pm-5pm">4pm-5pm</option>
-                            </select>
-                            <select class="form-select" name="morning" id="morning">
-                                <option selected>Morning</option>
-                                <option value="6pm-7pm">6pm-7pm</option>
-                                <option value="7pm-8pm">7pm-8pm</option>
-                                <option value="8pm-9pm">8pm-9pm</option>
-                                <option value="9pm-10pm">9pm-10pm</option>
-                            </select>
-                        </form>
-                    </div>
+                <div class="time-frame">
+                    <h5><strong>What works best for you?</strong></h5>
+                    <input type="checkbox" value="Monday"> Morning(8am-12pm)
+                    <input type="checkbox" value="Tuesday"> Afternoon(12pm-5pm)
+                    <input type="checkbox" value="Wednesday"> Evening(5pm-10pm)
+                </div>
+                <hr>
 
 
+                <div class="time">
+                    <h5><strong>Do you have a preferable time?</strong></h5>
+                    <input type="text" placeholder="Example: 9am" required>
+                </div>
+                <hr>
+
+                <div class="trt-chk">
+                    <h5><strong>Treatment choice</strong></h5>
+                    <h6>Massage</h6>
+                    <select name="Massage" id="Massage">
+                        <option selected disabled>Please choose a treatment</option>
+                        <option value="Body Radiance">Body Radiance</option>
+                        <option value="Deep Tissue">Deep Tissue</option>
+                        <option value="Sports Massage">Sports Massage</option>
+                    </select>
+                    <h6>Facials</h6>
+                    <select name="Facials" id="Facials">
+                        <option selected disabled>Please choose a treatment</option>
+                        <option value="Dermaplane Facial">Dermaplane Facial</option>
+                        <option value="Microneedling Facial">Microneedling Facial</option>
+                        <option value="Biotec Facial">Biotec Facial</option>
+                    </select>
+                    <h6>Hand & Foot</h6>
+                    <select name="HandFoot" id="HandFoot">
+                        <option selected disabled>Please choose a treatment</option>
+                        <option value="Manicure">Manicure</option>
+                        <option value="Pedicure">Pedicure</option>
+                        <option value="Ultimate Foot Transformation">Ultimate Foot Transformation</option>
+                    </select>
+                    <h6>Waxing</h6>
+                    <select name="Waxing" id="Waxing">
+                        <option selected disabled>Please choose a treatment</option>
+                        <option value="Bikini Wax">Bikini Wax</option>
+                        <option value="Full Leg Wax">Full Leg Wax</option>
+                        <option value="Men's Ultimate Ritual">Men's Ultimate Ritual</option>
+                    </select>
+                </div>
+                <hr>
+
+                <div class="tc">
+                    <input type="checkbox" name="confirm" id="confirm" required>By checking this box you adhere to the Terms and Conditions
+                </div>
+                <hr>
+
+                <input class="btn btn-dark" type="button" value="Submit">
 
 
             </div>
-            <div class="btn-cont">
-                <button class="nxt-btn btn btn-dark" id="cont-bk">Continue</button>
-            </div>
-        </div>
+        </form>
     </div>
+</div>
+
 
 {% endblock %}

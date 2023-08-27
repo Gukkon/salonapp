@@ -167,80 +167,34 @@ p {
 
 /* Booking page -----------------------------------------------------------------------------------------*/
 
-.bk-container {
-    background-color: whitesmoke;
-     width: 50%;
-     margin: 0 auto;
-}
-
-
-.tabs {
+.form-container {
     display: flex;
+    justify-content: center;
 }
 
-.bk-tab {
-  /* float: left; */
-  padding: 14px 16px;
-  transition: 0.3s;
-}
-
-
-.btn-cont {
-    text-align: center;
-}
-
-.nxt-btn {
-    margin-bottom: 10px;
+.form-content {
+    padding: 20px;
     margin-top: 20px;
+    border-radius: 20px;
+    background-color: rgba(152, 231, 231, 0.6);
 }
 
-/* days ---------------------------------------------------------------------------------------------- */
-
-.title {
-    text-align: center;
+.fm-input input[type=checkbox] {
+    margin: 0 10px;
 }
 
-.title h4 {
-    margin: 10px 0;
+.time-frame input[type=checkbox] {
+    margin: 0 10px;
 }
 
-.list {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+.trt-chk {
+    display: grid;
+    width: 30%;
 }
 
-input[type=submit] {
-    font-size: 1.5em;
-    width: 50%;
-    background-color: #04AA6D;
-    border: none;
-    color: white;
-    padding: 16px 32px;
-    text-decoration: none;
-    margin: 4px 2px;
-    cursor: pointer;
+.trt-chk h6 {
+    margin-top: 5px;font-weight: bold;
 }
-
-input[type=submit]:hover {
-    opacity: 0.5;
-}
-
-/* time -------------------------------------------------------------------------- */
-
-.form-select {
-    text-align: center;
-    background-color: #04AA6D;
-    color: white;
-    font-size: 1.5em;
-    width: 50%;
-    cursor: pointer;
-}
-
-
-
-
-
 
 
 /* media queries */

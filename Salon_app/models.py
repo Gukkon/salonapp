@@ -6,7 +6,7 @@ from flask_login import UserMixin
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-# Create Database Model (EDIT THIS !!! MAY NEED TO CREATE A MODELS.PY FILE)
+# Registration form database
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(200), nullable=False)
@@ -14,6 +14,10 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), nullable=False, unique=True)
     password = db.Column(db.String(60), nullable=False)
     date_added = db.Column(db.DateTime, default=datetime.utcnow)
+
+
+# Database for booking creation
+
 
 
 # Create A repr method (what gets printed out)
