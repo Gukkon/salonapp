@@ -1,7 +1,7 @@
 import os
-from flask import render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for, request
 from Salon_app import app, db, bcrypt
-from Salon_app.forms import RegistrationForm, LoginForm, ValidationError
+from Salon_app.forms import RegistrationForm, LoginForm, ValidationError, BookingForm
 from Salon_app.models import User
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -65,6 +65,11 @@ def logout():
     return render_template("logout.html")
 
 
-@app.route('/bookings')
+@app.route('/bookings', methods=['GET','POST'])
 def bookings():
-    return render_template("bookings.html")
+    form = BookingForm()
+    if form.validate_on_submit():
+        result = request.form
+        return redirect(url_for('account'), result=result)
+    else:
+        return render_template("bookings.html", form=form)

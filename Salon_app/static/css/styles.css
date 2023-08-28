@@ -173,6 +173,7 @@ p {
 }
 
 .form-content {
+    width: 540px;
     padding: 20px;
     margin-top: 20px;
     border-radius: 20px;
@@ -188,8 +189,14 @@ p {
 }
 
 .trt-chk {
-    display: grid;
     width: 30%;
+}
+
+.grid {
+    width: 330%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
 }
 
 .trt-chk h6 {
