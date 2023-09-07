@@ -43,20 +43,20 @@ class BookingForm(FlaskForm):
         day = SelectField(
                 choices=[
                         ('','Please Choose a Day'),
-                        ('Monday','Monday'),
-                        ('Tuesday','Tuesday'),
-                        ('Wednesday','Wednesday'),
-                        ('Thursday','Thursday'),
-                        ('Friday','Friday'),
-                        ('Saturday','Saturday'),
-                        ('Sunday','Sunday')])
+                        ('Mon','Monday'),
+                        ('Tues','Tuesday'),
+                        ('Wed','Wednesday'),
+                        ('Thurs','Thursday'),
+                        ('Fri','Friday'),
+                        ('Sat','Saturday'),
+                        ('Sun','Sunday')])
 
         timeFrame = SelectField(
                 choices=[
                         ('','Please Choose a Time Slot'),
-                        ('Morning(8am-12pm)','Morning(8am-12pm)'),
-                        ('Afternoon(12pm-5pm)','Afternoon(12pm-5pm)'),
-                        ('Evening(5pm-10pm)','Evening(5pm-10pm)')])
+                        ('Morn','Morning(8am-12pm)'),
+                        ('After','Afternoon(12pm-5pm)'),
+                        ('Eve','Evening(5pm-10pm)')])
 
         time = StringField(validators=[DataRequired(), Length(max=3)])
 
