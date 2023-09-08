@@ -2,7 +2,7 @@ import os
 from flask import render_template, flash, redirect, url_for, request
 from Salon_app import app, db, bcrypt
 from Salon_app.forms import RegistrationForm, LoginForm, ValidationError, BookingForm
-from Salon_app.models import User
+from Salon_app.models import User, Booking
 from flask_login import login_user, current_user, logout_user, login_required
 
 
@@ -69,7 +69,18 @@ def logout():
 def bookings():
     form = BookingForm()
     if form.validate_on_submit():
+        bookings = Booking(day=form.day.data, 
+                           timeFrame=form.timeFrame.data, 
+                           time=form.time.data, 
+                           massage=form.massage.data,
+                           facials=form.facials.data, 
+                           handFoot=form.handFoot.data, 
+                           waxing=form.waxing.data,
+                           terms=form.terms.data)
+        db.session.add(bookings)
+        db.session.commit()
         result = request.form
+        flash('Your treatment has been created successfully!')
         return redirect(url_for('account'), result=result)
     else:
         return render_template("bookings.html", form=form)

@@ -17,9 +17,20 @@ class User(db.Model, UserMixin):
 
 
 # Database for booking creation
-
+class Booking(db.Model):
+    day = db.Column(db.String(50), nullable=False)
+    timeFrame = db.Column(db.String(50), nullable=False, unique=True)
+    time = db.Column(db.String(5), nullable=False, unique=True)
+    massage = db.Column(db.String(50))
+    facials = db.Column(db.String(50))
+    handFoot = db.Column(db.String(50))
+    waxing = db.Column(db.String(50))
+    terms = db.Column(db.Boolean, nullable=False)
 
 
 # Create A repr method (what gets printed out)
     def __repr__(self):
         return f"User('{self.id}', '{self.name}', '{self.username}', '{self.email}')"
+    
+    def __repr__(self):
+        return f"Booking('{self.day}', '{self.timeFrame}', '{self.time}', '{self.massage}', '{self.facials}', '{self.handFoot}', '{self.waxing}')"
