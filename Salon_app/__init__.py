@@ -18,11 +18,10 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 
 # Initialize The Database Instance
 db = SQLAlchemy(app)
+app.app_context()
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 
-# with app.app_context().push():
-#     db.create_all()
 
 
 

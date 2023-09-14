@@ -53,8 +53,11 @@ def register():
 
 
 @app.route('/account')
+@login_required
 def account():
-    return render_template("account.html", title='Welcome')
+    user_id = current_user.id
+    bookings = Booking.query.filter_by(user_id=user_id).all()
+    return render_template("account.html", title='Welcome', bookings=bookings)
 
 
 @app.route('/logout')
@@ -68,6 +71,7 @@ def logout():
 @app.route('/bookings', methods=['GET','POST'])
 def bookings():
     form = BookingForm()
+    user_id = current_user.id
     if form.validate_on_submit():
         bookings = Booking(day=form.day.data, 
                            timeFrame=form.timeFrame.data, 
@@ -81,6 +85,6 @@ def bookings():
         db.session.commit()
         result = request.form
         flash('Your treatment has been created successfully!')
-        return redirect(url_for('account'), result=result)
+        return redirect(url_for('account'), result=result, user_id=user_id)
     else:
         return render_template("bookings.html", form=form)
