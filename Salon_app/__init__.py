@@ -8,17 +8,15 @@ import psycopg2
 
 
 app = Flask(__name__)
+
 # Secret Key
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 # Add Database
-# Old Database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
-# New Database
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 
 # Initialize The Database Instance
 db = SQLAlchemy(app)
-app.app_context()
+app.app_context().push()
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 
