@@ -21,11 +21,23 @@
         </div>
     </div>
     <div class="bk-select backgrd sidebar">
-        <div class="bk-view">
+        <div id="no-bk" class="bk-view">
             <h1>Treatments</h1>
             <h5>No treatments booked</h5>
-            <button class="btn btn-dark"><a href="{{ url_for('bookings') }}">Book Treatments</a></button>
         </div>
+            <div id="fm-data" class="form-data">
+                <div class="data-content">
+                    <h5>Appointment 1</h5>
+                    <p><strong>Name:</strong> {{ current_user.name }}</p>
+                    <p><strong>Day:</strong> {{ bookings.day }}</p>
+                    <p><strong>Time:</strong> {{ bookings.time }}</p>
+                    <p><strong>Massage:</strong> {{ bookings.massage }}</p>
+                    <p><strong>Facials:</strong> {{ bookings.facials }}</p>
+                    <p><strong>Manicure/Pedicure:</strong> {{ bookings.handFoot }}</p>
+                    <p><strong>Waxing:</strong> {{ bookings.waxing }}</p>
+                </div>
+            </div>
+            <button class="btn btn-dark"><a href="{{ url_for('bookings') }}">Book Treatments</a></button>
     </div>
 </div>
 

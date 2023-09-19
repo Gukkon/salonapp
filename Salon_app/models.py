@@ -25,7 +25,7 @@ class Booking(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     day = db.Column(db.String(50), nullable=False)
     timeFrame = db.Column(db.String(50), nullable=False, unique=True)
-    time = db.Column(db.String(5), nullable=False, unique=True)
+    time = db.Column(db.String(10), nullable=False, unique=True)
     massage = db.Column(db.String(50))
     facials = db.Column(db.String(50))
     handFoot = db.Column(db.String(50))

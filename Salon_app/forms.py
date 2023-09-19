@@ -58,7 +58,7 @@ class BookingForm(FlaskForm):
                         ('After','Afternoon(12pm-5pm)'),
                         ('Eve','Evening(5pm-10pm)')])
 
-        time = StringField(validators=[DataRequired(), Length(max=3)])
+        time = StringField(validators=[DataRequired(), Length(max=5)])
 
         massage = SelectField(u'Massage',
                           choices=[

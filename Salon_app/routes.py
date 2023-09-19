@@ -73,6 +73,15 @@ def bookings():
     form = BookingForm()
     user_id = current_user.id
     if form.validate_on_submit():
+        # day = request.form['day']
+        # timeFrame = request.form['timeFrame']
+        # time = request.form['time']
+        # massage = request.form['massage']
+        # facials = request.form['facials']
+        # handFoot = request.form['handFoot']
+        # waxing = request.form['waxing']
+        # terms = request.form['terms']
+        # record = Booking(day, timeFrame, time, massage, facials, handFoot, waxing, terms)
         bookings = Booking(day=form.day.data, 
                            timeFrame=form.timeFrame.data, 
                            time=form.time.data, 
@@ -81,10 +90,10 @@ def bookings():
                            handFoot=form.handFoot.data, 
                            waxing=form.waxing.data,
                            terms=form.terms.data)
+        result = request.form
         db.session.add(bookings)
         db.session.commit()
-        result = request.form
         flash('Your treatment has been created successfully!')
-        return redirect(url_for('account'), result=result, user_id=user_id)
+        return redirect(url_for('account'), result=result, user_id=user_id, bookings=bookings)
     else:
         return render_template("bookings.html", form=form)
