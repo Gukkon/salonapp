@@ -72,29 +72,27 @@ def logout():
 @login_required
 def bookings():
     form = BookingForm()
-    if form.validate_on_submit():
-        user_id = current_user.id
-        # day = request.form.get['day']
-        # timeFrame = request.form.get['timeFrame']
-        # time = request.form.get['time']
-        # massage = request.form.get['massage']
-        # facials = request.form.get['facials']
-        # handFoot = request.form.get['handFoot']
-        # waxing = request.form.get['waxing']
-        # terms = request.form.get['terms']
-        # record = Booking(day, timeFrame, time, massage, facials, handFoot, waxing, terms)
-        bookings = Booking(day=form.day.data, 
-                           timeFrame=form.timeFrame.data, 
-                           time=form.time.data, 
-                           massage=form.massage.data,
-                           facials=form.facials.data, 
-                           handFoot=form.handFoot.data, 
-                           waxing=form.waxing.data,
-                           terms=form.terms.data)
-        # result = request.form
-        db.session.add(bookings)
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            user_id = current_user.id
+            book_upd.day = request.form['day']
+            book_upd.timeFrame = request.form['timeFrame']
+            book_upd.time = request.form['time']
+            book_upd.massage = request.form['massage']
+            book_upd.facials = request.form['facials']
+            book_upd.handFoot = request.form['handFoot']
+            book_upd.waxing = request.form['waxing']
+            book_upd.terms = request.form['terms']
+        # bookings = Booking(day=form.day.data, 
+        #                    timeFrame=form.timeFrame.data, 
+        #                    time=form.time.data, 
+        #                    massage=form.massage.data,
+        #                    facials=form.facials.data, 
+        #                    handFoot=form.handFoot.data, 
+        #                    waxing=form.waxing.data,
+        #                    terms=form.terms.data)
         db.session.commit()
         flash('Your treatment has been created successfully!')
-        return redirect(url_for('account'), user_id=user_id, bookings=bookings)
+        return redirect(url_for('account'), form=form)
     else:
         return render_template("bookings.html", form=form)

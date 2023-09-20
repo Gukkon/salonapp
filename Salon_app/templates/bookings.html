@@ -4,7 +4,7 @@
 
 <div class="form-wrapper">
     <div class="form-container">
-        <form class="form-content" action="" method="POST">
+        <form class="form-content" action="{{ url_for('bookings') }}" method="POST">
             <input type="hidden" name="user_id" value="{{ current_user.id }}">
             <div class="fm-title">
                 <h1>Appointment Request Form</h1>
@@ -36,7 +36,7 @@
                 <hr>
 
                 <div class="time-frame">
-                    <h5><strong>What works best for you?</strong></h5>
+                    <h5><strong>What time frame works best for you?</strong></h5>
                     {% if form.timeFrame.errors %}
                     {{ form.timeFrame(class="form-control form-control-md is-invalid required") }}
                     <div class="invalid-feedback">
