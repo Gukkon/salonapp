@@ -69,18 +69,19 @@ def logout():
 
 
 @app.route('/bookings', methods=['GET','POST'])
+@login_required
 def bookings():
     form = BookingForm()
-    user_id = current_user.id
     if form.validate_on_submit():
-        # day = request.form['day']
-        # timeFrame = request.form['timeFrame']
-        # time = request.form['time']
-        # massage = request.form['massage']
-        # facials = request.form['facials']
-        # handFoot = request.form['handFoot']
-        # waxing = request.form['waxing']
-        # terms = request.form['terms']
+        user_id = current_user.id
+        # day = request.form.get['day']
+        # timeFrame = request.form.get['timeFrame']
+        # time = request.form.get['time']
+        # massage = request.form.get['massage']
+        # facials = request.form.get['facials']
+        # handFoot = request.form.get['handFoot']
+        # waxing = request.form.get['waxing']
+        # terms = request.form.get['terms']
         # record = Booking(day, timeFrame, time, massage, facials, handFoot, waxing, terms)
         bookings = Booking(day=form.day.data, 
                            timeFrame=form.timeFrame.data, 
@@ -90,10 +91,10 @@ def bookings():
                            handFoot=form.handFoot.data, 
                            waxing=form.waxing.data,
                            terms=form.terms.data)
-        result = request.form
+        # result = request.form
         db.session.add(bookings)
         db.session.commit()
         flash('Your treatment has been created successfully!')
-        return redirect(url_for('account'), result=result, user_id=user_id, bookings=bookings)
+        return redirect(url_for('account'), user_id=user_id, bookings=bookings)
     else:
         return render_template("bookings.html", form=form)

@@ -62,31 +62,31 @@ class BookingForm(FlaskForm):
 
         massage = SelectField(u'Massage',
                           choices=[
-                                ('','Please Select a Treatment'),
+                                ('','None'),
                                 ('Body Radiance','Body Radiance'),
                                 ('Deep Tissue','Deep Tissue'),
                                 ('Sports Massage','Sports Massage')])
 
         facials = SelectField(u'Facials',
                           choices=[
-                                ('','Please Select a Treatment'),
+                                ('','None'),
                                 ('Dermaplane Facial','Dermaplane Facial'),
                                 ('Microneedling Facial','Microneedling Facial'),
                                 ('Biotec Facial','Biotec Facial')])
 
         handFoot = SelectField(u'Hand & Foot',
                           choices=[
-                                ('','Please Select a Treatment'),
+                                ('','None'),
                                 ('Manicure','Manicure'),
                                 ('Pedicure','Pedicure'),
                                 ('Ultimate Foot Transformation','Ultimate Foot Transformation')])
 
         waxing = SelectField(u'Waxing',
                           choices=[
-                                ('','Please Select a Treatment'),
+                                ('','None'),
                                 ('Bikini Wax','Bikini Wax'),
                                 ('Full Leg Wax','Full Leg Wax'),
                                 ('Mens Ultimate Ritual','Mens Ultimate Ritual')])
         terms = BooleanField('By clicking, you are accepting our Terms and Conditions', validators=[DataRequired()])
 
-        submit = SubmitField()
+        submit = SubmitField('Submit')
