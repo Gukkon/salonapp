@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, BooleanField, SelectField, RadioField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
-from Salon_app.models import User
+from Salon_app.models import User, Booking
 from wtforms_alchemy import QuerySelectMultipleField
 
 

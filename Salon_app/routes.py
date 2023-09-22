@@ -4,6 +4,7 @@ from Salon_app import app, db, bcrypt
 from Salon_app.forms import RegistrationForm, LoginForm, ValidationError, BookingForm
 from Salon_app.models import User, Booking
 from flask_login import login_user, current_user, logout_user, login_required
+import sqlite3
 
 
 
@@ -72,27 +73,21 @@ def logout():
 @login_required
 def bookings():
     form = BookingForm()
-    if request.method == 'POST':
-        if form.validate_on_submit():
-            user_id = current_user.id
-            book_upd.day = request.form['day']
-            book_upd.timeFrame = request.form['timeFrame']
-            book_upd.time = request.form['time']
-            book_upd.massage = request.form['massage']
-            book_upd.facials = request.form['facials']
-            book_upd.handFoot = request.form['handFoot']
-            book_upd.waxing = request.form['waxing']
-            book_upd.terms = request.form['terms']
-        # bookings = Booking(day=form.day.data, 
-        #                    timeFrame=form.timeFrame.data, 
-        #                    time=form.time.data, 
-        #                    massage=form.massage.data,
-        #                    facials=form.facials.data, 
-        #                    handFoot=form.handFoot.data, 
-        #                    waxing=form.waxing.data,
-        #                    terms=form.terms.data)
+    if form.validate_on_submit():
+           
+        bookings = Booking(
+            day = form.day.data, 
+            timeFrame = form.timeFrame.data, 
+            time = form.time.data, 
+            massage = form.massage.data,
+            facials = form.facials.data, 
+            handFoot = form.handFoot.data, 
+            waxing = form.waxing.data,
+            terms = form.terms.data)
+            
+        db.session.add(bookings)   
         db.session.commit()
         flash('Your treatment has been created successfully!')
-        return redirect(url_for('account'), form=form)
+        return render_template("account.html", form=form)
     else:
         return render_template("bookings.html", form=form)
