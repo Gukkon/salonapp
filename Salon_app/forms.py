@@ -41,27 +41,29 @@ class LoginForm(FlaskForm):
 
 class BookingForm(FlaskForm):
         day = SelectField(
-                choices=[
-                        ('','Please Choose a Day'),
-                        ('Mon','Monday'),
-                        ('Tues','Tuesday'),
-                        ('Wed','Wednesday'),
-                        ('Thurs','Thursday'),
-                        ('Fri','Friday'),
-                        ('Sat','Saturday'),
-                        ('Sun','Sunday')])
+        choices=[
+                ('','Please Choose a Day'),
+                ('Mon','Monday'),
+                ('Tues','Tuesday'),
+                ('Wed','Wednesday'),
+                ('Thurs','Thursday'),
+                ('Fri','Friday'),
+                ('Sat','Saturday'),
+                ('Sun','Sunday')
+                ])
 
-        timeFrame = SelectField(
-                choices=[
-                        ('','Please Choose a Time Slot'),
-                        ('Morn','Morning(8am-12pm)'),
-                        ('After','Afternoon(12pm-5pm)'),
-                        ('Eve','Evening(5pm-10pm)')])
+        timeFrame = SelectField(      
+        choices=[
+                ('','Please Choose a Time Slot'),
+                ('Morn','Morning(8am-12pm)'),
+                ('After','Afternoon(12pm-5pm)'),
+                ('Eve','Evening(5pm-10pm)')
+                ])
 
         time = StringField(validators=[DataRequired(), Length(max=5)])
 
         massage = SelectField(u'Massage',
-                          choices=[
+                        choices=[
                                 ('','None'),
                                 ('Body Radiance','Body Radiance'),
                                 ('Deep Tissue','Deep Tissue'),

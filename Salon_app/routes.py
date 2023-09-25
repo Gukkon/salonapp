@@ -1,5 +1,5 @@
 import os
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, current_app
 from Salon_app import app, db, bcrypt
 from Salon_app.forms import RegistrationForm, LoginForm, ValidationError, BookingForm
 from Salon_app.models import User, Booking
@@ -73,8 +73,9 @@ def logout():
 @login_required
 def bookings():
     form = BookingForm()
-    if form.validate_on_submit():
-           
+
+    if request.method == 'POST' and form.validate_on_submit():   
+        # current_app.logger.debug('Form Data: %s', form.data)      
         bookings = Booking(
             day = form.day.data, 
             timeFrame = form.timeFrame.data, 
@@ -83,11 +84,13 @@ def bookings():
             facials = form.facials.data, 
             handFoot = form.handFoot.data, 
             waxing = form.waxing.data,
-            terms = form.terms.data)
-            
+            terms = form.terms.data,
+            user_id=current_user.id
+        )  
+        
         db.session.add(bookings)   
         db.session.commit()
         flash('Your treatment has been created successfully!')
-        return render_template("account.html", form=form)
-    else:
-        return render_template("bookings.html", form=form)
+        return redirect(url_for('account'))
+    
+    return render_template("bookings.html", form=form)

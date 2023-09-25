@@ -38,3 +38,13 @@ class Booking(db.Model):
     def __repr__(self):
         return f"Booking('{self.day}', '{self.timeFrame}', '{self.time}', '{self.massage}', '{self.facials}', '{self.handFoot}', '{self.waxing}')"
     
+    def __init__(self, day, timeFrame, time, massage, facials, handFoot, waxing, terms, user_id):
+        self.day = day
+        self.timeFrame = timeFrame
+        self.time = time
+        self.massage = massage
+        self.facials = facials
+        self.handFoot = handFoot
+        self.waxing = waxing
+        self.terms = terms
+        self.user_id = user_id

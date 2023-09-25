@@ -24,17 +24,8 @@
                 {% else %}
                     {{ form.day(class="form-control form-control-md required") }}
                 {% endif %}
-
-                    <!-- <input type="checkbox" name="day" value="Monday"> Monday
-                    <input type="checkbox" name="day" value="Tuesday"> Tuesday
-                    <input type="checkbox" name="day" value="Wednesday"> Wednesday
-                    <input type="checkbox" name="day" value="Thursday"> Thursday
-                    <input type="checkbox" name="day" value="Friday"> Friday
-                    <input type="checkbox" name="day" value="Saturday"> Saturday
-                    <input type="checkbox" name="day" value="Sunday"> Sunday -->
                 </div>
                 <hr>
-
                 <div class="time-frame">
                     <h5><strong>What time frame works best for you?</strong></h5>
                     {% if form.timeFrame.errors %}
@@ -46,14 +37,9 @@
                     </div>
                 {% else %}
                     {{ form.timeFrame(class="form-control form-control-md required") }}
-                {% endif %}
-
-                    <!-- <input type="checkbox" name="timefm" value="Monday"> Morning(8am-12pm)
-                    <input type="checkbox" name="timefm" value="Tuesday"> Afternoon(12pm-5pm)
-                    <input type="checkbox" name="timefm" value="Wednesday"> Evening(5pm-10pm) -->
+                {% endif %}  
                 </div>
                 <hr>
-
                 <div class="time">
                     <h5><strong>Do you have a preferable time?</strong></h5>
                     {% if form.time.errors %}
@@ -65,103 +51,66 @@
                     </div>
                 {% else %}
                     {{ form.time(class="form-control form-control-md required") }}
-                {% endif %}
-
-                    <!-- <input type="text" placeholder="Example: 9am" required> -->
+                {% endif %}           
                 </div>
                 <hr>
-
                 <div class="trt-chk">
                     <h5><strong>Treatment choice</strong></h5>
                     <div class="grid">
                         <div class="g1">
                     <h6>Massage</h6>
                     {% if form.massage.errors %}
-                    {{ form.massage(class="form-control form-control-md is-invalid required") }}
+                    {{ form.massage(class="form-control form-control-md is-invalid") }}
                     <div class="invalid-feedback">
                         {% for error in form.massage.errors %}
                             <span>{{  error }}</span>
                         {% endfor %}
                     </div>
                 {% else %}
-                    {{ form.massage(class="form-control form-control-md required") }}
-                {% endif %}
-
-
-                    <!-- <select name="Massage" id="Massage">
-                        <option selected disabled>Please choose a treatment</option>
-                        <option value="Body Radiance">Body Radiance</option>
-                        <option value="Deep Tissue">Deep Tissue</option>
-                        <option value="Sports Massage">Sports Massage</option>
-                    </select> -->
+                    {{ form.massage(class="form-control form-control-md") }}
+                {% endif %}                  
                     <h6>Facials</h6>
                     {% if form.facials.errors %}
-                    {{ form.facials(class="form-control form-control-md is-invalid required") }}
+                    {{ form.facials(class="form-control form-control-md is-invalid") }}
                     <div class="invalid-feedback">
                         {% for error in form.facials.errors %}
                             <span>{{  error }}</span>
                         {% endfor %}
                     </div>
                 {% else %}
-                    {{ form.facials(class="form-control form-control-md required") }}
-                {% endif %}
-
-
-                    <!-- <select name="Facials" id="Facials">
-                        <option selected disabled>Please choose a treatment</option>
-                        <option value="Dermaplane Facial">Dermaplane Facial</option>
-                        <option value="Microneedling Facial">Microneedling Facial</option>
-                        <option value="Biotec Facial">Biotec Facial</option>
-                    </select> -->
+                    {{ form.facials(class="form-control form-control-md") }}
+                {% endif %}            
                         </div>
                         <div class="g2">
                     <h6>Hand & Foot</h6>
                     {% if form.handFoot.errors %}
-                    {{ form.handFoot(class="form-control form-control-md is-invalid required") }}
+                    {{ form.handFoot(class="form-control form-control-md is-invalid") }}
                     <div class="invalid-feedback">
                         {% for error in form.handFoot.errors %}
                             <span>{{  error }}</span>
                         {% endfor %}
                     </div>
                 {% else %}
-                    {{ form.handFoot(class="form-control form-control-md required") }}
-                {% endif %}
-
-
-                    <!-- <select name="HandFoot" id="HandFoot">
-                        <option selected disabled>Please choose a treatment</option>
-                        <option value="Manicure">Manicure</option>
-                        <option value="Pedicure">Pedicure</option>
-                        <option value="Ultimate Foot Transformation">Ultimate Foot Transformation</option>
-                    </select> -->
+                    {{ form.handFoot(class="form-control form-control-md") }}
+                {% endif %}              
                     <h6>Waxing</h6>
                     {% if form.waxing.errors %}
-                    {{ form.waxing(class="form-control form-control-md is-invalid required") }}
+                    {{ form.waxing(class="form-control form-control-md is-invalid") }}
                     <div class="invalid-feedback">
                         {% for error in form.waxing.errors %}
                             <span>{{  error }}</span>
                         {% endfor %}
                     </div>
                 {% else %}
-                    {{ form.waxing(class="form-control form-control-md required") }}
-                {% endif %}
-
-
-                    <!-- <select name="Waxing" id="Waxing">
-                        <option selected disabled>Please choose a treatment</option>
-                        <option value="Bikini Wax">Bikini Wax</option>
-                        <option value="Full Leg Wax">Full Leg Wax</option>
-                        <option value="Men's Ultimate Ritual">Men's Ultimate Ritual</option>
-                    </select> -->
+                    {{ form.waxing(class="form-control form-control-md") }}
+                {% endif %}               
                         </div>
                     </div>
                 </div>
                 <hr>
-
-
                 <div class="tc">
                     {% if form.terms.errors %}
-                    {{ form.terms(class="form-control form-control-md is-invalid required") }}
+                    {{ form.terms(class="form-control form-control-md is-invalid") }}
                     <div class="invalid-feedback">
                         {% for error in form.terms.errors %}
                             <span>{{  error }}</span>
@@ -170,19 +119,10 @@
                 {% else %}
                     {{ form.terms(class="required") }}
                 {% endif %}
-                {{ form.terms.label }}
-
-
-                    <!-- <input type="checkbox" name="confirm" id="confirm" required>By checking this box you adhere to the Terms and Conditions -->
+                {{ form.terms.label }}    
                 </div>
                 <hr>
                 {{ form.submit(class="btn btn-dark") }}
-
-
-
-                <!-- <input class="btn btn-dark" type="button" value="Submit"> -->
-
-
             </div>
         </form>
     </div>
