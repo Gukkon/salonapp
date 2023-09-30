@@ -73,24 +73,50 @@ def logout():
 @login_required
 def bookings():
     form = BookingForm()
-
-    if request.method == 'POST' and form.validate_on_submit():   
+    # print('METHOD:', request.method)
+    print('FORM', request.form)
+    if request.method == 'POST':   
         # current_app.logger.debug('Form Data: %s', form.data)      
-        bookings = Booking(
-            day = form.day.data, 
-            timeFrame = form.timeFrame.data, 
-            time = form.time.data, 
-            massage = form.massage.data,
-            facials = form.facials.data, 
-            handFoot = form.handFoot.data, 
-            waxing = form.waxing.data,
-            terms = form.terms.data,
-            user_id=current_user.id
-        )  
+        # bookings = Booking(
+        #     day = form.day.data, 
+        #     timeFrame = form.timeFrame.data, 
+        #     time = form.time.data, 
+        #     massage = form.massage.data,
+        #     facials = form.facials.data, 
+        #     handFoot = form.handFoot.data, 
+        #     waxing = form.waxing.data,
+        #     terms = form.terms.data,
+        #     user_id=current_user.id
+        # )  
+
+        input_value = request.form.get('terms')
+
+        if input_value == 'y':
+            terms_boolean = True
+        elif input_value == 'n':
+            terms_boolean = False
+        else:
+        # Handle invalid input or provide a default value as needed
+            terms_boolean = False
         
-        db.session.add(bookings)   
+        booking = Booking(
+            day=request.form.get('day'),
+            timeFrame=request.form.get('timeFrame'),
+            time=request.form.get('time'),
+            massage=request.form.get('massage'),
+            facials=request.form.get('facials'),
+            handFoot=request.form.get('handFoot'),
+            waxing=request.form.get('waxing'),
+            terms=terms_boolean,
+            user_id=current_user.id)
+
+            
+            
+        
+        db.session.add(booking)   
         db.session.commit()
+
         flash('Your treatment has been created successfully!')
         return redirect(url_for('account'))
-    
+
     return render_template("bookings.html", form=form)
