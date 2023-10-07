@@ -1,4 +1,9 @@
-
+function hideDiv() {
+    const divToHide = document.getElementById("no-bk");
+    if (divToHide) {
+        divToHide.style.display = "none";
+    }
+}
 
 function createNewDiv(title, data) {
     const div = document.createElement("div");
@@ -45,47 +50,6 @@ function createNewDiv(title, data) {
     // Append the new div to the 'bk-select' parent div
     document.getElementById("bk-select").appendChild(div);
 }
-// document.addEventListener("DOMContentLoaded", function () {
-
-//     // Add a form submission event listener
-//     const bookingForm = document.getElementById("bkForm");
-//     bookingForm.addEventListener("submit", handleSubmit);
-
-//     // Function to handle form submission
-//     function handleSubmit(event) {
-//         event.preventDefault(); // Prevent the form from submitting traditionally
-
-//         // Get the input data from the form inputs (replace 'inputFieldId' with actual IDs)
-//         const day = document.getElementById("day").value;
-//         const timeFrame = document.getElementById("timeFrame").value;
-//         const time = document.getElementById("time").value;
-//         const massage = document.getElementById("massage").value;
-//         const facials = document.getElementById("facials").value;
-//         const handFoot = document.getElementById("handFoot").value;
-//         const waxing = document.getElementById("waxing").value;
-//         const terms = document.getElementById("terms").value;
-
-//         // Check if any of the input data is not empty (you can customize this check)
-//         if (day.trim() !== "" && timeFrame.trim() !== "" /* add more conditions as needed */) {
-//             // Create an array with the data you want to display
-//             const formData = [
-//                 `Day: ${day}`,
-//                 `Time Frame: ${timeFrame}`,
-//                 `Time: ${time}`,
-//                 `Massage: ${massage}`,
-//                 `Facials: ${facials}`,
-//                 `Manicure/Pedicure: ${handFoot}`,
-//                 `Waxing: ${waxing}`,
-//                 `Terms: ${terms}`,
-//             ];
-
-//             // Call the functions to create a new div and hide the 'no-bk' div
-//             createNewDiv("Treatment Details", formData);
-//             hideDiv();
-//         }
-//     }
-    
-// });
 
 document.addEventListener("DOMContentLoaded", function () {
     const bookingForm = document.getElementById("bkForm");
@@ -105,6 +69,8 @@ document.addEventListener("DOMContentLoaded", function () {
             waxing: bookingForm.querySelector('.g2 input').value,
             terms: bookingForm.querySelector('.tc input:checked') ? 'Yes' : 'No',
         };
+
+        console.log('Form Data:', formData);
 
         // Check if any of the input data is not empty (customize this check)
         if (
