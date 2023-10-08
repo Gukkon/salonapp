@@ -58,26 +58,46 @@ document.addEventListener("DOMContentLoaded", function () {
     function handleSubmit(event) {
         event.preventDefault(); // Prevent the form from submitting traditionally
 
+        // const dayInput = document.querySelector('[name="day"]');
+        // const timeFrameInput = document.querySelector('[name="timeFrame"]');
+        // const timeInput = document.querySelector('[name="time"]');
+        // const massageInput = document.querySelector('[name="massage"]');
+        // const facialsInput = document.querySelector('[name="facials"]');
+        // const handFootInput = document.querySelector('[name="handFoot"]');
+        // const waxingInput = document.querySelector('[name="waxing"]');
+        // const termsInput = document.querySelector('[name="terms"]');
+
+        // const formData = {
+        //     day: dayInput.getAttribute('value'),
+        //     timeFrame: timeFrameInput.getAttribute('value'),
+        //     time: timeInput.getAttribute('value'), 
+        //     massage: massageInput.getAttribute('value'),
+        //     facials: facialsInput.getAttribute('value'),
+        //     handFoot: handFootInput.getAttribute('value'),
+        //     waxing: waxingInput.getAttribute('value'),
+        //     terms: termsInput.getAttribute('value'),
+        // };
+
         // Collect data from form fields by traversing the form's structure
         const formData = {
-            day: bookingForm.querySelector('.days input').value,
-            timeFrame: bookingForm.querySelector('.time-frame input').value,
-            time: bookingForm.querySelector('.time input').value,
-            massage: bookingForm.querySelector('.g1 input').value,
-            facials: bookingForm.querySelector('.g1 input').value,
-            handFoot: bookingForm.querySelector('.g2 input').value,
-            waxing: bookingForm.querySelector('.g2 input').value,
+            day: bookingForm.querySelector('.days').value,
+            timeFrame: bookingForm.querySelector('.time-frame').value,
+            time: bookingForm.querySelector('.time').value,
+            massage: bookingForm.querySelector('.g1').value,
+            facials: bookingForm.querySelector('.g1').value,
+            handFoot: bookingForm.querySelector('.g2').value,
+            waxing: bookingForm.querySelector('.g2').value,
             terms: bookingForm.querySelector('.tc input:checked') ? 'Yes' : 'No',
         };
 
         console.log('Form Data:', formData);
 
         // Check if any of the input data is not empty (customize this check)
-        if (
-            formData.day.trim() !== "" &&
-            formData.timeFrame.trim() !== "" &&
-            formData.time.trim() !== ""
-        ) {
+        // if (
+        //     formData.day.trim() !== "" &&
+        //     formData.timeFrame.trim() !== "" &&
+        //     formData.time.trim() !== ""
+        // ) {
             // Create an array with the data you want to display
             const treatmentData = [
                 `Day: ${formData.day}`,
@@ -95,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
             hideDiv();
         }
     }
-});
+);
 
 
 
