@@ -1,5 +1,5 @@
 import os
-from flask import render_template, flash, redirect, url_for, request, current_app
+from flask import render_template, flash, redirect, url_for, request, current_app, Response
 from Salon_app import app, db, bcrypt
 from Salon_app.forms import RegistrationForm, LoginForm, ValidationError, BookingForm
 from Salon_app.models import User, Booking
@@ -52,21 +52,13 @@ def register():
     return render_template("register.html", title='Register', form=form)
 
 
-
-@app.route('/account')
-@login_required
-def account():
-    user_id = current_user.id
-    bookings = Booking.query.filter_by(user_id=user_id).all()
-    return render_template("account.html", title='Welcome', bookings=bookings)
-
-
 @app.route('/logout')
 def logout():
     logout_user()
     flash('You have successfully logged out', 'success')
     return redirect(url_for('index'))
     return render_template("logout.html")
+
 
 
 @app.route('/bookings', methods=['GET','POST'])
@@ -109,9 +101,19 @@ def bookings():
             waxing=request.form.get('waxing'),
             terms=terms_boolean,
             user_id=current_user.id)
-
-            
-            
+        
+    #     appointment = {
+    #     'day': day,
+    #     'time_frame': time_frame,
+    #     'time': time,
+    #     'massage': massage,
+    #     'facials': facials,
+    #     'hand_foot': hand_foot,
+    #     'waxing': waxing,
+    #     'terms': terms
+    # }
+    #     appointments.append(appointment)
+  
         
         db.session.add(booking)   
         db.session.commit()
@@ -120,3 +122,10 @@ def bookings():
         return redirect(url_for('account'))
 
     return render_template("bookings.html", form=form)
+
+@app.route('/account')
+@login_required
+def account():
+    user_id = current_user.id
+    bookings = Booking.query.filter_by(user_id=user_id).all()
+    return render_template("account.html", title='Welcome', bookings=bookings)
