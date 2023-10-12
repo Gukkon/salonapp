@@ -20,7 +20,7 @@
             <p><strong>Date Joined:</strong> {{ current_user.date_added }} </p>
         </div>
     </div>
-    <div class="backgrd sidebar" id="bkselect">
+    <div class="backgrd sidebar" id="bk-select">
         <div id="no-bk" class="bk-view">
             <h1>Treatments</h1>
             <h5>No treatments booked</h5>
@@ -53,5 +53,4 @@
             <button class="btn btn-dark"><a href="{{ url_for('bookings') }}">Book Treatments</a></button>
     </div>
 </div>
-
 {% endblock %}

@@ -57,7 +57,6 @@ def logout():
     logout_user()
     flash('You have successfully logged out', 'success')
     return redirect(url_for('index'))
-    return render_template("logout.html")
 
 
 
@@ -68,18 +67,6 @@ def bookings():
     # print('METHOD:', request.method)
     print('FORM', request.form)
     if request.method == 'POST':   
-        # current_app.logger.debug('Form Data: %s', form.data)      
-        # bookings = Booking(
-        #     day = form.day.data, 
-        #     timeFrame = form.timeFrame.data, 
-        #     time = form.time.data, 
-        #     massage = form.massage.data,
-        #     facials = form.facials.data, 
-        #     handFoot = form.handFoot.data, 
-        #     waxing = form.waxing.data,
-        #     terms = form.terms.data,
-        #     user_id=current_user.id
-        # )  
 
         input_value = request.form.get('terms')
 
@@ -102,24 +89,15 @@ def bookings():
             terms=terms_boolean,
             user_id=current_user.id)
         
-    #     appointment = {
-    #     'day': day,
-    #     'time_frame': time_frame,
-    #     'time': time,
-    #     'massage': massage,
-    #     'facials': facials,
-    #     'hand_foot': hand_foot,
-    #     'waxing': waxing,
-    #     'terms': terms
-    # }
-    #     appointments.append(appointment)
-  
         
         db.session.add(booking)   
         db.session.commit()
 
+        user_id = current_user.id
+        bookings = Booking.query.filter_by(user_id=user_id).all()
+
         flash('Your treatment has been created successfully!')
-        return redirect(url_for('account'))
+        return render_template("account.html", title='Welcome', bookings=bookings)
 
     return render_template("bookings.html", form=form)
 
