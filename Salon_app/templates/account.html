@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% if flash_message %}
+<div class="alert alert-success">
+    {{ flash_message }}
+</div>
+{% endif %}
 
 <div class="main-acc-cont">
     <div class="welc-user backgrd">
@@ -21,36 +26,32 @@
         </div>
     </div>
     <div class="backgrd sidebar" id="bk-select">
-        <div id="no-bk" class="bk-view">
+        <!-- <div id="no-bk" class="bk-view">
             <h1>Treatments</h1>
             <h5>No treatments booked</h5>
-        </div>
+        </div> -->
 
-            <!-- <div id="fm-data" class="form-data">
-                <div class="data-content">
-                    <h1>Account Page</h1>
-                    <h2>Appointments</h2>
+            <div id="fm-data" class="form-data">
+                <div class="bk-data">
+                    <h1>Booking Details</h1>
                     <ul>
-                        {% for appointment in appointments %}
-                        <li>
-                            Day: {{ appointment.day }}<br>
-                            Time Frame: {{ appointment.time_frame }}<br>
-                            Time: {{ appointment.time }}<br>
-                            Massage: {{ appointment.massage }}<br>
-                            Facials: {{ appointment.facials }}<br>
-                            Hand & Foot: {{ appointment.hand_foot }}<br>
-                            Waxing: {{ appointment.waxing }}<br>
-                            Terms: {{ appointment.terms }}
-                        </li>
-                        {% endfor %}
+                        <li><strong>Day:</strong> {{ bookings['day'] }}</li>
+                        <li><strong>Time Frame:</strong> {{ bookings['timeFrame'] }}</li>
+                        <li><strong>Time:</strong> {{ bookings['time'] }}</li>
+                        <li><strong>Massage:</strong> {{ bookings['massage'] }}</li>
+                        <li><strong>Facials:</strong> {{ bookings['facials'] }}</li>
+                        <li><strong>Hand & Foot:</strong> {{ bookings['handFoot'] }}</li>
+                        <li><strong>Waxing:</strong> {{ bookings['waxing'] }}</li>
+                        <li><strong>Terms:</strong> {{ bookings['terms'] }}</li>
                     </ul>
                 </div>
                 <div>
                     <input type="submit" id="edit" value="Edit">
                     <input type="submit" id="del" value="Delete">
                 </div>
-            </div> -->
+            </div>
             <button class="btn btn-dark"><a href="{{ url_for('bookings') }}">Book Treatments</a></button>
     </div>
 </div>
+<!-- <script src="{{ url_for('static', filename='js/script.js') }}" type="text/javascript"></script> -->
 {% endblock %}

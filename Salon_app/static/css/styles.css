@@ -145,6 +145,7 @@ p {
 /* account page -----------------------------------------------------------------------------------------*/
 
 .main-acc-cont {
+    font-size: 1.2rem;
     display: grid;
     gap: 20px;
     grid-template-columns: 2fr 1fr;

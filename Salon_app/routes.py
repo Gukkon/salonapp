@@ -67,7 +67,6 @@ def bookings():
     # print('METHOD:', request.method)
     print('FORM', request.form)
     if request.method == 'POST':   
-
         input_value = request.form.get('terms')
 
         if input_value == 'y':
@@ -89,15 +88,26 @@ def bookings():
             terms=terms_boolean,
             user_id=current_user.id)
         
-        
         db.session.add(booking)   
         db.session.commit()
 
         user_id = current_user.id
         bookings = Booking.query.filter_by(user_id=user_id).all()
 
+        bookings = {
+            'user_id': current_user.id,
+            'day': request.form.get('day'),
+            'timeFrame': request.form.get('timeFrame'),
+            'time': request.form.get('time'),
+            'massage': request.form.get('massage'),
+            'facials': request.form.get('facials'),
+            'handFoot': request.form.get('handFoot'),
+            'waxing': request.form.get('waxing'),
+            'terms': request.form.get('terms')
+        }
+
         flash('Your treatment has been created successfully!')
-        return render_template("account.html", title='Welcome', bookings=bookings)
+        return render_template("account.html", title='Welcome', bookings=bookings, booking=booking)
 
     return render_template("bookings.html", form=form)
 
@@ -106,4 +116,5 @@ def bookings():
 def account():
     user_id = current_user.id
     bookings = Booking.query.filter_by(user_id=user_id).all()
-    return render_template("account.html", title='Welcome', bookings=bookings)
+    flash_message = "Your treatment has been created successfully!"
+    return render_template("account.html", title='Welcome', bookings=bookings, flash_message=flash_message)
