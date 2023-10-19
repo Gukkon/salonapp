@@ -64,28 +64,28 @@ class BookingForm(FlaskForm):
 
         massage = SelectField(u'Massage',
                         choices=[
-                                ('','None'),
+                                ('None','None'),
                                 ('Body Radiance','Body Radiance'),
                                 ('Deep Tissue','Deep Tissue'),
                                 ('Sports Massage','Sports Massage')])
 
         facials = SelectField(u'Facials',
                           choices=[
-                                ('','None'),
+                                ('None','None'),
                                 ('Dermaplane Facial','Dermaplane Facial'),
                                 ('Microneedling Facial','Microneedling Facial'),
                                 ('Biotec Facial','Biotec Facial')])
 
         handFoot = SelectField(u'Hand & Foot',
                           choices=[
-                                ('','None'),
+                                ('None','None'),
                                 ('Manicure','Manicure'),
                                 ('Pedicure','Pedicure'),
                                 ('Ultimate Foot Transformation','Ultimate Foot Transformation')])
 
         waxing = SelectField(u'Waxing',
                           choices=[
-                                ('','None'),
+                                ('None','None'),
                                 ('Bikini Wax','Bikini Wax'),
                                 ('Full Leg Wax','Full Leg Wax'),
                                 ('Mens Ultimate Ritual','Mens Ultimate Ritual')])

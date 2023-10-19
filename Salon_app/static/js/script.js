@@ -1,348 +1,224 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const bookingForm = document.getElementById("bkForm");
-    const bkSelect = document.getElementById("bk-select");
-    const noBkDiv = document.getElementById("no-bk");
+function submitForm() {
+    const bookingForm = document.getElementById("Form");
+    const accountsDiv = document.getElementById("accounts");
 
-    if (bkSelect) {
-        bookingForm.addEventListener("submit", function (event) {
-            event.preventDefault();
+    const formData = new FormData(bookingForm);
+    const appointmentData = {
+        day: formData.get("day"),
+        timeFrame: formData.get("timeFrame"),
+        time: formData.get("time"),
+        massage: formData.get("massage"),
+        facials: formData.get("facials"),
+        handFoot: formData.get("handFoot"),
+        waxing: formData.get("waxing"),
+        terms: formData.get("terms") === "on" ? "Yes" : "No",
+    };
 
-            const formData = new FormData(bookingForm);
-            const appointment = {
-                day: formData.get("day"),
-                timeFrame: formData.get("timeFrame"),
-                time: formData.get("time"),
-                massage: formData.get("massage"),
-                facials: formData.get("facials"),
-                handFoot: formData.get("handFoot"),
-                waxing: formData.get("waxing"),
-                terms: formData.get("terms") === "on" ? "Yes" : "No",
-            };
+    const appointmentDiv = document.createElement("div");
+    appointmentDiv.classList.add("appointment-div");
 
-            // Create a new appointment div
-            const div = document.createElement("div");
-            div.classList.add("Appointment");
+    const appointmentHTML = `
+        <h3>Appointment Request</h3>
+        <p><strong>Day:</strong> ${appointmentData.day}</p>
+        <p><strong>Time Frame:</strong> ${appointmentData.timeFrame}</p>
+        <p><strong>Time:</strong> ${appointmentData.time}</p>
+        <p><strong>Massage:</strong> ${appointmentData.massage}</p>
+        <p><strong>Facials:</strong> ${appointmentData.facials}</p>
+        <p><strong>Hand & Foot:</strong> ${appointmentData.handFoot}</p>
+        <p><strong>Waxing:</strong> ${appointmentData.waxing}</p>
+        <p><strong>Terms:</strong> ${appointmentData.terms}</p>
+    `;
 
-            // Display appointment details
-            const header = document.createElement("h2");
-            header.textContent = "Appointment";
-            div.appendChild(header);
+    appointmentDiv.innerHTML = appointmentHTML;
 
-            const ul = document.createElement("ul");
-            for (const key in appointment) {
-                const li = document.createElement("li");
-                li.textContent = `${key}: ${appointment[key]}`;
-                ul.appendChild(li);
-            }
-            div.appendChild(ul);
-
-            // Create Edit and Delete buttons
-            const editButton = document.createElement("button");
-            editButton.textContent = "Edit";
-            editButton.addEventListener("click", function () {
-                // Handle edit button click event (e.g., open a form for editing)
-                alert("Edit button clicked");
-            });
-
-            const deleteButton = document.createElement("button");
-            deleteButton.textContent = "Delete";
-            deleteButton.addEventListener("click", function () {
-                // Handle delete button click event (e.g., remove the appointment)
-                bkSelect.removeChild(div);
-                // Check if there are no more appointments, then show the no-bk div
-                if (bkSelect.childElementCount === 0) {
-                    noBkDiv.style.display = "block";
-                }
-            });
-
-            div.appendChild(editButton);
-            div.appendChild(deleteButton);
-
-            // Add the new appointment to the "bk-select" div
-            bkSelect.appendChild(div);
-
-            // Clear the form for the next appointment
-            bookingForm.reset();
-
-            // Hide the no-bk div
-            noBkDiv.style.display = "none";
-        });
-    }
-});
-
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    
-    const bookingForm = document.getElementById("bkForm");
-    const bkSelect = document.getElementById("bk-select");
-
-    if (bkSelect) {
-        
-    bookingForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        const formData = new FormData(bookingForm);
-        const appointment = {
-            day: formData.get("day"),
-            timeFrame: formData.get("timeFrame"),
-            time: formData.get("time"),
-            massage: formData.get("massage"),
-            facials: formData.get("facials"),
-            handFoot: formData.get("handFoot"),
-            waxing: formData.get("waxing"),
-            terms: formData.get("terms") === "on" ? "Yes" : "No",
-        };
-
-        // Create a new appointment div
-        const div = document.createElement("div");
-        div.classList.add("Appointment");
-
-        // Display appointment details
-        const header = document.createElement("h2");
-        header.textContent = "Appointment";
-        div.appendChild(header);
-
-        const ul = document.createElement("ul");
-        for (const key in appointment) {
-            const li = document.createElement("li");
-            li.textContent = `${key}: ${appointment[key]}`;
-            ul.appendChild(li);
-        }
-        div.appendChild(ul);
-
-        // Create Edit and Delete buttons
-        const editButton = document.createElement("button");
-        editButton.textContent = "Edit";
-        editButton.addEventListener("click", function () {
-            // Handle edit button click event (e.g., open a form for editing)
-            alert("Edit button clicked");
-        });
-
-        const deleteButton = document.createElement("button");
-        deleteButton.textContent = "Delete";
-        deleteButton.addEventListener("click", function () {
-            // Handle delete button click event (e.g., remove the appointment)
-            bkSelect.removeChild(div);
-        });
-
-        div.appendChild(editButton);
-        div.appendChild(deleteButton);
-
-        // Add the new appointment to the "bkselect" div
-        bkSelect.appendChild(div);
-
-        // Clear the form for the next appointment
-        bookingForm.reset();
+    const editButton = document.createElement("button");
+    editButton.textContent = "Edit";
+    editButton.addEventListener("click", function () {
+        // Implement edit functionality here
+        alert("Edit button clicked");
     });
 
-  }
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.addEventListener("click", function () {
+        // Remove the appointment div
+        accountsDiv.removeChild(appointmentDiv);
+    });
 
-});
+    appointmentDiv.appendChild(editButton);
+    appointmentDiv.appendChild(deleteButton);
+
+    accountsDiv.appendChild(appointmentDiv);
+
+    bookingForm.reset();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 // document.addEventListener("DOMContentLoaded", function () {
-//     function hideDiv() {
-//     const divToHide = document.getElementById("no-bk");
-//     if (divToHide) {
-//         divToHide.style.display = "none";
-//     }
-// }
-
-// function createNewDiv(title, data) {
-//     const div = document.createElement("div");
-
-//     // Create a header for the title
-//     const header = document.createElement("h2");
-//     header.textContent = title;
-//     div.appendChild(header);
-
-//     // Create an unordered list
-//     const ul = document.createElement("ul");
-
-//     // Iterate through the data and create list items
-//     for (const item of data) {
-//         const li = document.createElement("li");
-//         li.textContent = item;
-//         ul.appendChild(li);
-//     }
-
-//     // Append the unordered list to the div
-//     div.appendChild(ul);
-
-//     // Create Edit and Delete buttons
-//     const editButton = document.createElement("button");
-//     editButton.textContent = "Edit";
-//     editButton.addEventListener("click", () => {
-//         // Handle the edit button click event here
-//         // You can open a form or perform any edit-related action
-//         alert("Edit button clicked");
-//     });
-
-//     const deleteButton = document.createElement("button");
-//     deleteButton.textContent = "Delete";
-//     deleteButton.addEventListener("click", () => {
-//         // Handle the delete button click event here
-//         // You can prompt the user for confirmation and delete the data if confirmed
-//         alert("Delete button clicked");
-//     });
-
-//     // Append the buttons to the div
-//     div.appendChild(editButton);
-//     div.appendChild(deleteButton);
-
-//     // Append the new div to the 'bk-select' parent div
-//     document.getElementById("bkselect").appendChild(div);
-// }
-
 //     const bookingForm = document.getElementById("bkForm");
-//     bookingForm.addEventListener("submit", handleSubmit);
+//     const accountsDiv = document.getElementById("accounts");
 
-//     function handleSubmit(event) {
-//         event.preventDefault(); // Prevent the form from submitting traditionally
+//     if (bookingForm && accountsDiv) {
+//         bookingForm.addEventListener("submit", function (event) {
+//             event.preventDefault();
+            
+//             const formData = new FormData(bookingForm);
+//             const appointmentData = {
+//                 day: formData.get("day"),
+//                 timeFrame: formData.get("timeFrame"),
+//                 time: formData.get("time"),
+//                 massage: formData.get("massage"),
+//                 facials: formData.get("facials"),
+//                 handFoot: formData.get("handFoot"),
+//                 waxing: formData.get("waxing"),
+//                 terms: formData.get("terms") === "on" ? "Yes" : "No",
+//             };
 
-//         const formData = {
-//             day: bookingForm.querySelector('[name="day"]').value,
-//             timeFrame: bookingForm.querySelector('[name="timeFrame"]').value,
-//             time: bookingForm.querySelector('[name="time"]').value,
-//             massage: bookingForm.querySelector('[name="massage"]').value,
-//             facials: bookingForm.querySelector('[name="facials"]').value,
-//             handFoot: bookingForm.querySelector('[name="handFoot"]').value,
-//             waxing: bookingForm.querySelector('[name="waxing"]').value,
-//             terms: bookingForm.querySelector('[name="terms"]:checked') ? 'Yes' : 'No',
-//         };
+//             // Create a new div to display appointment data
+//             const appointmentDiv = document.createElement("div");
+//             appointmentDiv.classList.add("appointment-div");
 
-//         // const formData = {
-//         //     day: dayInput.getAttribute('value'),
-//         //     timeFrame: timeFrameInput.getAttribute('value'),
-//         //     time: timeInput.getAttribute('value'), 
-//         //     massage: massageInput.getAttribute('value'),
-//         //     facials: facialsInput.getAttribute('value'),
-//         //     handFoot: handFootInput.getAttribute('value'),
-//         //     waxing: waxingInput.getAttribute('value'),
-//         //     terms: termsInput.getAttribute('value'),
-//         // };
+//             // Display appointment data
+//             const appointmentHTML = `
+//                 <h3>Appointment Request</h3>
+//                 <p><strong>Day:</strong> ${appointmentData.day}</p>
+//                 <p><strong>Time Frame:</strong> ${appointmentData.timeFrame}</p>
+//                 <p><strong>Time:</strong> ${appointmentData.time}</p>
+//                 <p><strong>Massage:</strong> ${appointmentData.massage}</p>
+//                 <p><strong>Facials:</strong> ${appointmentData.facials}</p>
+//                 <p><strong>Hand & Foot:</strong> ${appointmentData.handFoot}</p>
+//                 <p><strong>Waxing:</strong> ${appointmentData.waxing}</p>
+//                 <p><strong>Terms:</strong> ${appointmentData.terms}</p>
+//             `;
 
-//         // Collect data from form fields by traversing the form's structure
-//         // const formData = {
-//         //     day: bookingForm.querySelector('.days').value,
-//         //     timeFrame: bookingForm.querySelector('.time-frame').value,
-//         //     time: bookingForm.querySelector('.time').value,
-//         //     massage: bookingForm.querySelector('.g1').value,
-//         //     facials: bookingForm.querySelector('.g1').value,
-//         //     handFoot: bookingForm.querySelector('.g2').value,
-//         //     waxing: bookingForm.querySelector('.g2').value,
-//         //     terms: bookingForm.querySelector('.tc input:checked') ? 'Yes' : 'No',
-//         // };
+//             appointmentDiv.innerHTML = appointmentHTML;
 
-//         console.log('Form Data:', formData);
+//             // Create Edit and Delete buttons
+//             const editButton = document.createElement("button");
+//             editButton.textContent = "Edit";
+//             editButton.addEventListener("click", function () {
+//                 // Implement edit functionality here
+//                 alert("Edit button clicked");
+//             });
 
-//         // Check if any of the input data is not empty (customize this check)
-//         if (
-//             formData.day.trim() !== "" &&
-//             formData.timeFrame.trim() !== "" &&
-//             formData.time.trim() !== ""
-//         ) {
-//             // Create an array with the data you want to display
-//             const treatmentData = [
-//                 `Day: ${formData.day}`,
-//                 `Time Frame: ${formData.timeFrame}`,
-//                 `Time: ${formData.time}`,
-//                 `Massage: ${formData.massage}`,
-//                 `Facials: ${formData.facials}`,
-//                 `Hand & Foot: ${formData.handFoot}`,
-//                 `Waxing: ${formData.waxing}`,
-//                 `Terms: ${formData.terms}`,
-//             ];
+//             const deleteButton = document.createElement("button");
+//             deleteButton.textContent = "Delete";
+//             deleteButton.addEventListener("click", function () {
+//                 // Remove the appointment div
+//                 accountsDiv.removeChild(appointmentDiv);
+//             });
 
-//             // Call the functions to create a new div and hide the 'no-bk' div
-//             createNewDiv("Treatment Details", treatmentData);
-//             hideDiv();} 
-//         }
+//             appointmentDiv.appendChild(editButton);
+//             appointmentDiv.appendChild(deleteButton);
+
+//             // Append the new appointment div to the accounts page
+//             accountsDiv.appendChild(appointmentDiv);
+
+//             // Clear the form for the next appointment
+//             bookingForm.reset();
+//         });
+//     }
 // });
 
 
-// // // Dont know anymore!!!!
 
-    
-// // document.addEventListener("DOMContentLoaded", function () {
-// //     const bookingForm = document.getElementById("bkForm");
-// //     const addAppointmentButton = document.getElementById("addAppointment");
-// //     const appointmentList = document.getElementById("bk-select");
-// //     const noBkDiv = document.getElementById("no-bk");
-// //     let appointmentCounter = 1;
 
-// //     addAppointmentButton.addEventListener("click", function () {
-// //         const dayInput = bookingForm.querySelector('.days input').value;
-// //         const timeFrameInput = bookingForm.querySelector('.time-frame input').value;
-// //         const timeInput = bookingForm.querySelector('.time input').value;
-// //         const massageInput = bookingForm.querySelector('.g1 input').value;
-// //         const facialsInput = bookingForm.querySelector('.g1 input').value;
-// //         const handFootInput = bookingForm.querySelector('.g2 input').value;
-// //         const waxingInput = bookingForm.querySelector('.g2 input').value;
-// //         const termsInput = bookingForm.querySelector('.tc input:checked') ? 'Yes' : 'No';
 
-// //         if (dayInput && timeFrameInput && timeInput) {
-// //             // Create a new div for the appointment
-// //             const appointmentDiv = document.createElement("div");
-// //             appointmentDiv.className = "appointment";
 
-// //             // Header for the appointment
-// //             const header = document.createElement("h3");
-// //             header.textContent = "Appointment " + appointmentCounter;
-// //             appointmentCounter++;
 
-// //             // Display treatment details
-// //             const treatmentData = [
-// //                 `Day: ${dayInput}`,
-// //                 `Time Frame: ${timeFrameInput}`,
-// //                 `Time: ${timeInput}`,
-// //                 `Massage: ${massageInput}`,
-// //                 `Facials: ${facialsInput}`,
-// //                 `Hand & Foot: ${handFootInput}`,
-// //                 `Waxing: ${waxingInput}`,
-// //                 `Terms: ${termsInput}`,
-// //             ];
 
-// //             // Create an unordered list for the treatment details
-// //             const ul = document.createElement("ul");
-// //             treatmentData.forEach((item) => {
-// //                 const li = document.createElement("li");
-// //                 li.textContent = item;
-// //                 ul.appendChild(li);
-// //             });
 
-// //             // Edit and Delete buttons
-// //             const editButton = document.createElement("button");
-// //             editButton.textContent = "Edit";
-// //             editButton.addEventListener("click", function () {
-// //                 // Handle edit appointment here (You can open a form or perform edit-related actions)
-// //                 alert("Edit button clicked");
-// //             });
+// document.addEventListener("DOMContentLoaded", function () {
+//     const bookingForm = document.getElementById("bkForm");
+//     const bkSelect = document.getElementById("bk-select");
+//     const noBkDiv = document.getElementById("no-bk");
 
-// //             const deleteButton = document.createElement("button");
-// //             deleteButton.textContent = "Delete";
-// //             deleteButton.addEventListener("click", function () {
-// //                 // Handle delete appointment here (You can prompt the user for confirmation and delete the data if confirmed)
-// //                 appointmentList.removeChild(appointmentDiv); // Remove the current appointment
-// //             });
+//     if (bkSelect) {
+//         bookingForm.addEventListener("submit", function (event) {
+//             event.preventDefault();
 
-// //             // Append elements to the appointment div
-// //             appointmentDiv.appendChild(header);
-// //             appointmentDiv.appendChild(ul);
-// //             appointmentDiv.appendChild(editButton);
-// //             appointmentDiv.appendChild(deleteButton);
+//             const formData = new FormData(bookingForm);
+//             const appointment = {
+//                 day: formData.get("day"),
+//                 timeFrame: formData.get("timeFrame"),
+//                 time: formData.get("time"),
+//                 massage: formData.get("massage"),
+//                 facials: formData.get("facials"),
+//                 handFoot: formData.get("handFoot"),
+//                 waxing: formData.get("waxing"),
+//                 terms: formData.get("terms") === "on" ? "Yes" : "No",
+//             };
 
-// //             // Add the new appointment to the list
-// //             appointmentList.appendChild(appointmentDiv);
+//             // Create a new appointment div
+//             const div = document.createElement("div");
+//             div.classList.add("Appointment");
 
-// //             // Clear the form inputs
-// //             bookingForm.reset();
+//             // Display appointment details
+//             const header = document.createElement("h2");
+//             header.textContent = "Appointment";
+//             div.appendChild(header);
 
-// //             // Show the appointment list and hide the "No appointments booked" message
-// //             noBkDiv.style.display = "none";
-// //         }
-// //     });
-// // });
+//             const ul = document.createElement("ul");
+//             for (const key in appointment) {
+//                 const li = document.createElement("li");
+//                 li.textContent = `${key}: ${appointment[key]}`;
+//                 ul.appendChild(li);
+//             }
+//             div.appendChild(ul);
+
+//             // Create Edit and Delete buttons
+//             const editButton = document.createElement("button");
+//             editButton.textContent = "Edit";
+//             editButton.addEventListener("click", function () {
+//                 // Handle edit button click event (e.g., open a form for editing)
+//                 alert("Edit button clicked");
+//             });
+
+//             const deleteButton = document.createElement("button");
+//             deleteButton.textContent = "Delete";
+//             deleteButton.addEventListener("click", function () {
+//                 // Handle delete button click event (e.g., remove the appointment)
+//                 bkSelect.removeChild(div);
+//                 // Check if there are no more appointments, then show the no-bk div
+//                 if (bkSelect.childElementCount === 0) {
+//                     noBkDiv.style.display = "block";
+//                 }
+//             });
+
+//             div.appendChild(editButton);
+//             div.appendChild(deleteButton);
+
+//             // Add the new appointment to the "bk-select" div
+//             bkSelect.appendChild(div);
+
+//             // Clear the form for the next appointment
+//             bookingForm.reset();
+
+//             // Hide the no-bk div
+//             noBkDiv.style.display = "none";
+//         });
+//     }
+// });
+
+
+
