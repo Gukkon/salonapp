@@ -29,31 +29,34 @@
             <p><strong>Date Joined:</strong> {{ current_user.date_added }} </p>
         </div>
     </div>
+</div>
     <div class="backgrd sidebar" id="accounts">
-   
-            <!-- <div>
-                <button class="btn btn-dark"><a href="{{ url_for('bookings') }}">Book Treatments</a></button>
-            </div> -->
-    
+        <div>
+            <table class="table table-hover table-bordered table-striped" >
+                {% for booking in bookings %}
+                <tbody class="bk-data">
+                    <tr>
+                        <td>
+                            
+                            <strong>Day:</strong> {{ booking.day }}<br>
+                            <strong>Time Frame:</strong> {{ booking.timeFrame }}<br>
+                            <strong>Time:</strong> {{ booking.time }}<br>
+                            <strong>Massage:</strong> {{ booking.massage }}<br>
+                            <strong>Facials:</strong> {{ booking.facials }}<br>
+                            <strong>Hand & Foot:</strong> {{ booking.handFoot }}<br>
+                            <strong>Waxing:</strong> {{ booking.waxing }}<br>
+                            <button><a href="{{ url_for('update', id=current_user.id) }}">Update</a></button>
+                        </td>
+                        
+                    </tr>
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+        </div>  
     </div>
 
 {% endblock %}
 
 
 
-<!-- <h1>Booking Details</h1>
-                    <ul>
-                        <li><strong>Day:</strong> {{ bookings['day'] }}</li>
-                        <li><strong>Time Frame:</strong> {{ bookings['timeFrame'] }}</li>
-                        <li><strong>Time:</strong> {{ bookings['time'] }}</li>
-                        <li><strong>Massage:</strong> {{ bookings['massage'] }}</li>
-                        <li><strong>Facials:</strong> {{ bookings['facials'] }}</li>
-                        <li><strong>Hand & Foot:</strong> {{ bookings['handFoot'] }}</li>
-                        <li><strong>Waxing:</strong> {{ bookings['waxing'] }}</li>
-                        <li><strong>Terms:</strong> {{ bookings['terms'] }}</li>
-                    </ul>
-                </div>
-                <div>
-                    <input type="submit" id="edit" value="Edit">
-                    <input type="submit" id="del" value="Delete">
-                </div> -->

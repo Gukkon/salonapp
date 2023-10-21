@@ -43,49 +43,49 @@ class BookingForm(FlaskForm):
         day = SelectField(
         choices=[
                 ('','Please Choose a Day'),
-                ('Mon','Monday'),
-                ('Tues','Tuesday'),
-                ('Wed','Wednesday'),
-                ('Thurs','Thursday'),
-                ('Fri','Friday'),
-                ('Sat','Saturday'),
-                ('Sun','Sunday')
+                ('Monday','Monday'),
+                ('Tuesday','Tuesday'),
+                ('Wednesday','Wednesday'),
+                ('Thursday','Thursday'),
+                ('Friday','Friday'),
+                ('Saturday','Saturday'),
+                ('Sunday','Sunday')
                 ])
 
         timeFrame = SelectField(      
         choices=[
                 ('','Please Choose a Time Slot'),
-                ('Morn','Morning(8am-12pm)'),
-                ('After','Afternoon(12pm-5pm)'),
-                ('Eve','Evening(5pm-10pm)')
+                ('Morning','Morning(8am-12pm)'),
+                ('Afternoon','Afternoon(12pm-5pm)'),
+                ('Evening','Evening(5pm-10pm)')
                 ])
 
         time = StringField(validators=[DataRequired(), Length(max=5)])
 
         massage = SelectField(u'Massage',
                         choices=[
-                                ('None','None'),
+                                ('N/A','None'),
                                 ('Body Radiance','Body Radiance'),
                                 ('Deep Tissue','Deep Tissue'),
                                 ('Sports Massage','Sports Massage')])
 
         facials = SelectField(u'Facials',
                           choices=[
-                                ('None','None'),
+                                ('N/A','None'),
                                 ('Dermaplane Facial','Dermaplane Facial'),
                                 ('Microneedling Facial','Microneedling Facial'),
                                 ('Biotec Facial','Biotec Facial')])
 
         handFoot = SelectField(u'Hand & Foot',
                           choices=[
-                                ('None','None'),
+                                ('N/A','None'),
                                 ('Manicure','Manicure'),
                                 ('Pedicure','Pedicure'),
                                 ('Ultimate Foot Transformation','Ultimate Foot Transformation')])
 
         waxing = SelectField(u'Waxing',
                           choices=[
-                                ('None','None'),
+                                ('N/A','None'),
                                 ('Bikini Wax','Bikini Wax'),
                                 ('Full Leg Wax','Full Leg Wax'),
                                 ('Mens Ultimate Ritual','Mens Ultimate Ritual')])

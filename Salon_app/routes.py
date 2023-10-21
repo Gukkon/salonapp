@@ -94,22 +94,35 @@ def bookings():
         user_id = current_user.id
         bookings = Booking.query.filter_by(user_id=user_id).all()
 
-        bookings = {
-            'user_id': current_user.id,
-            'day': request.form.get('day'),
-            'timeFrame': request.form.get('timeFrame'),
-            'time': request.form.get('time'),
-            'massage': request.form.get('massage'),
-            'facials': request.form.get('facials'),
-            'handFoot': request.form.get('handFoot'),
-            'waxing': request.form.get('waxing'),
-            'terms': request.form.get('terms')
-        }
 
         flash('Your treatment has been created successfully!')
         return render_template("account.html", title='Welcome', bookings=bookings, booking=booking)
 
     return render_template("bookings.html", form=form)
+
+
+# Update Database record
+@app.route('/update/<int:id>', methods= ['GET','POST'])
+def update(id):
+    form = BookingForm()
+    name_to_update = BookingForm.query.get_or_404(id)
+    if request.method == "POST":
+        name_to_update.day = request.form['day']
+        name_to_update.timeFrame = request.form['timeFrame']
+        name_to_update.time = request.form['time']
+        name_to_update.massage = request.form['massage']
+        name_to_update.facials = request.form['facials']
+        name_to_update.handFoot = request.form['handFoot']
+        name_to_update.waxing = request.form['waxing']
+        try:
+            db.session.commit()
+            flash("Appointment Updated Successfully")
+            return render_template("accounts", form=form, name_to_update=name_to_update)
+        except:
+            flash("Error! Looks liek we had a problem")
+            return render_template("accounts", form=form, name_to_update=name_to_update)
+
+
 
 @app.route('/account')
 @login_required
@@ -117,4 +130,4 @@ def account():
     user_id = current_user.id
     bookings = Booking.query.filter_by(user_id=user_id).all()
     flash_message = "Your treatment has been created successfully!"
-    return render_template("account.html", title='Welcome', bookings=bookings, flash_message=flash_message)
+    return render_template("account.html", title='Welcome', bookings=bookings, flash_message=flash_message,user_id=user_id)

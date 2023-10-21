@@ -2,72 +2,12 @@
 
 {% block content %}
 
-<!-- <div class="form-wrapper">
-    <div class="form-container">
-        <form class="form-content" name="bookingForm" action="/bookings" id="bkForm" method="POST">
-            <input type="hidden" name="user_id" value="{{ current_user.id }}">
-            <div class="fm-title">
-                <h1>Appointment Request Form</h1>
-                <h6>For all requests, please fill out the form below</h6>
-                <hr>
-            </div>
-            <div class="fm-input">
-                <div class="days">
-                    <h5><strong>What day is best for you?</strong></h5>
-
-                    <select class="form-control form-control-md required" id="day" name="day">
-                        <option value="">Please select a day</option>
-                        <option value="Monday">Monday</option>
-                        <option value="Tuesday">Tuesday</option>
-                        <option value="Wednesday">Wednesday</option>
-                        <option value="Thursday">Thursday</option>
-                        <option value="Friday">Friday</option>
-                        <option value="Saturday">Saturday</option>
-                        <option value="Sunday">Sunday</option>
-                    </select>
-            
-                </div>
-                <hr>
-                <div class="time-frame">
-                    <h5><strong>What time frame works best for you?</strong></h5>
-                    <input type="text" name="timeFrame" class="form-control form-control-md required">
-                </div>
-                <hr>
-                <div class="time">
-                    <h5><strong>Do you have a preferable time?</strong></h5>
-                    <input type="text" name="time" class="form-control form-control-md required">
-                </div>
-                <hr>
-                <div class="trt-chk">
-                    <h5><strong>Treatment choice</strong></h5>
-                    <div class="grid">
-                        <div class="g1">
-                            <h6>Massage</h6>
-                            <input type="checkbox" name="massage">
-                            <h6>Facials</h6>
-                            <input type="checkbox" name="facials">
-                        </div>
-                        <div class="g2">
-                            <h6>Hand & Foot</h6>
-                            <input type="checkbox" name="handFoot">
-                            <h6>Waxing</h6>
-                            <input type="checkbox" name="waxing">
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="tc">
-                    <input type="checkbox" name="terms" class="required">
-                    <label for="terms">I agree to the terms and conditions</label>
-                </div>
-                <hr>
-                <div>
-                    <button type="submit" class="btn btn-dark">Submit</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div> -->
+{% for message in get_flashed_messages() %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
 
 
 <div class="form-wrapper">

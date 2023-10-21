@@ -2,6 +2,14 @@
 
 {% block content %}
 
+{% for message in get_flashed_messages() %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endfor %}
+
+
     <div class="content-section">
         <form class="form-size needs-validation" method="POST" action="" novalidate>
             {{ form.hidden_tag() }}

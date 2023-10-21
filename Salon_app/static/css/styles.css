@@ -147,14 +147,16 @@ p {
 .main-acc-cont {
     font-size: 1.2rem;
     display: grid;
-    gap: 20px;
+    height: 350px;
     grid-template-columns: 2fr 1fr;
     grid-template-rows: repeat(2, 1fr);
 
 }
 
-.sidebar {
-    grid-column: span 2;
+.table {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
 }
 
 .backgrd {
