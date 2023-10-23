@@ -67,15 +67,15 @@ def bookings():
     # print('METHOD:', request.method)
     print('FORM', request.form)
     if request.method == 'POST':   
-        input_value = request.form.get('terms')
+        # input_value = request.form.get('terms')
 
-        if input_value == 'y':
-            terms_boolean = True
-        elif input_value == 'n':
-            terms_boolean = False
-        else:
-        # Handle invalid input or provide a default value as needed
-            terms_boolean = False
+        # if input_value == 'y':
+        #     terms_boolean = True
+        # elif input_value == 'n':
+        #     terms_boolean = False
+        # else:
+        # # Handle invalid input or provide a default value as needed
+        #     terms_boolean = False
         
         booking = Booking(
             day=request.form.get('day'),
@@ -85,7 +85,6 @@ def bookings():
             facials=request.form.get('facials'),
             handFoot=request.form.get('handFoot'),
             waxing=request.form.get('waxing'),
-            terms=terms_boolean,
             user_id=current_user.id)
         
         db.session.add(booking)   

@@ -30,7 +30,6 @@ class Booking(db.Model):
     facials = db.Column(db.String(50))
     handFoot = db.Column(db.String(50))
     waxing = db.Column(db.String(50))
-    terms = db.Column(db.Boolean, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
 # Create A repr method (what gets printed out)
