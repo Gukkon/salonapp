@@ -6,6 +6,7 @@
         {% for category, message in messages %}
             <div class="alert alert-success">
                 {{ flash_message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         {% endfor %}
     {% endif %}
@@ -45,7 +46,11 @@
                             <strong>Facials:</strong> {{ booking.facials }}<br>
                             <strong>Hand & Foot:</strong> {{ booking.handFoot }}<br>
                             <strong>Waxing:</strong> {{ booking.waxing }}<br>
-                            <button><a href="{{ url_for('update', id=current_user.id) }}">Update</a></button>
+                            <button><a href="{{ url_for('update', user_id=current_user.id, id=booking.id) }}">Update</a></button>
+
+                            
+
+
                         </td>
                         
                     </tr>

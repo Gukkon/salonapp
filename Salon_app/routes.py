@@ -102,10 +102,13 @@ def bookings():
 
 
 # Update Database record
-@app.route('/update/<int:id>', methods= ['GET','POST'])
-def update(id):
+@app.route('/update/<int:user_id>/<int:id>', methods= ['GET','POST'])
+def update(user_id, id):
     form = BookingForm()
-    name_to_update = BookingForm.query.get_or_404(id)
+    # name_to_update = Booking.query.filter_by(user_id=user_id, id=id).first_or_404()
+    name_to_update = Booking.query.filter_by(user_id=user_id, id=id).first_or_404()
+    # appointment = Booking.query.get_or_404(id)
+
     if request.method == "POST":
         name_to_update.day = request.form['day']
         name_to_update.timeFrame = request.form['timeFrame']
@@ -114,13 +117,15 @@ def update(id):
         name_to_update.facials = request.form['facials']
         name_to_update.handFoot = request.form['handFoot']
         name_to_update.waxing = request.form['waxing']
+
         try:
             db.session.commit()
             flash("Appointment Updated Successfully")
-            return render_template("accounts", form=form, name_to_update=name_to_update)
+            return redirect(url_for('account'))
         except:
-            flash("Error! Looks liek we had a problem")
-            return render_template("accounts", form=form, name_to_update=name_to_update)
+            flash("Error! Looks like we had a problem")
+    
+    return render_template("update.html", form=form, name_to_update=name_to_update, user_id=user_id)
 
 
 

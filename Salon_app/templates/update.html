@@ -12,7 +12,7 @@
 
 <div class="form-wrapper">
   <div class="form-container">
-    <form class="form-content" name="bookingForm" action="/update/{{ name_to_update.id }}" id="Form" method="POST">
+    <form class="form-content" name="bookingForm" action="{{ url_for('update', user_id=user_id, id=name_to_update.id) }}" id="Form" method="POST">
       <input type="hidden" name="user_id" value="{{ current_user.id }}">
       <div class="fm-title">
         <h1>To update your selected appointment, please fill out the form again</h1>
@@ -22,42 +22,42 @@
         <div class="days">
           <h5><strong>What day is best for you?</strong></h5>
           {% if form.day.errors %}
-          {{ form.day(class="form-control form-control-md is-invalid required value=name_to_update.day") }}
+          {{ form.day(class="form-control form-control-md is-invalid required", value=name_to_update.day) }}
           <div class="invalid-feedback">
             {% for error in form.day.errors %}
             <span>{{ error }}</span>
             {% endfor %}
           </div>
           {% else %}
-          {{ form.day(class="form-control form-control-md required") }}
+          {{ form.day(class="form-control form-control-md required", value=name_to_update.day) }}
           {% endif %}
         </div>
         <hr>
         <div class="time-frame">
           <h5><strong>What time frame works best for you?</strong></h5>
           {% if form.timeFrame.errors %}
-          {{ form.timeFrame(class="form-control form-control-md is-invalid required value=name_to_update.timeFrame") }}
+          {{ form.timeFrame(class="form-control form-control-md is-invalid required", value=name_to_update.timeFrame) }}
           <div class="invalid-feedback">
             {% for error in form.timeFrame.errors %}
             <span>{{ error }}</span>
             {% endfor %}
           </div>
           {% else %}
-          {{ form.timeFrame(class="form-control form-control-md required") }}
+          {{ form.timeFrame(class="form-control form-control-md required", value=name_to_update.timeFrame) }}
           {% endif %}
         </div>
         <hr>
         <div class="time">
           <h5><strong>Do you have a preferable time?</strong></h5>
           {% if form.time.errors %}
-          {{ form.time(class="form-control form-control-md is-invalid required value=name_to_update.time") }}
+          {{ form.time(class="form-control form-control-md is-invalid required", value=name_to_update.time) }}
           <div class="invalid-feedback">
             {% for error in form.time.errors %}
             <span>{{ error }}</span>
             {% endfor %}
           </div>
           {% else %}
-          {{ form.time(class="form-control form-control-md required") }}
+          {{ form.time(class="form-control form-control-md required", value=name_to_update.time) }}
           {% endif %}
         </div>
         <hr>
@@ -67,49 +67,49 @@
             <div class="g1">
               <h6>Massage</h6>
               {% if form.massage.errors %}
-              {{ form.massage(class="form-control form-control-md is-invalid value=name_to_update.massage") }}
+              {{ form.massage(class="form-control form-control-md is-invalid", value=name_to_update.massage) }}
               <div class="invalid-feedback">
                 {% for error in form.massage.errors %}
                 <span>{{ error }}</span>
                 {% endfor %}
               </div>
               {% else %}
-              {{ form.massage(class="form-control form-control-md") }}
+              {{ form.massage(class="form-control form-control-md", value=name_to_update.massage) }}
               {% endif %}
               <h6>Facials</h6>
               {% if form.facials.errors %}
-              {{ form.facials(class="form-control form-control-md is-invalid value=name_to_update.facials") }}
+              {{ form.facials(class="form-control form-control-md is-invalid", value=name_to_update.facials) }}
               <div class="invalid-feedback">
                 {% for error in form.facials.errors %}
                 <span>{{ error }}</span>
                 {% endfor %}
               </div>
               {% else %}
-              {{ form.facials(class="form-control form-control-md") }}
+              {{ form.facials(class="form-control form-control-md", value=name_to_update.facials) }}
               {% endif %}
             </div>
             <div class="g2">
               <h6>Hand & Foot</h6>
               {% if form.handFoot.errors %}
-              {{ form.handFoot(class="form-control form-control-md is-invalid value=name_to_update.handFoot") }}
+              {{ form.handFoot(class="form-control form-control-md is-invalid", value=name_to_update.handFoot) }}
               <div class="invalid-feedback">
                 {% for error in form.handFoot.errors %}
                 <span>{{ error }}</span>
                 {% endfor %}
               </div>
               {% else %}
-              {{ form.handFoot(class="form-control form-control-md") }}
+              {{ form.handFoot(class="form-control form-control-md", value=name_to_update.handFoot) }}
               {% endif %}
               <h6>Waxing</h6>
               {% if form.waxing.errors %}
-              {{ form.waxing(class="form-control form-control-md is-invalid value=name_to_update.waxing") }}
+              {{ form.waxing(class="form-control form-control-md is-invalid", value=name_to_update.waxing) }}
               <div class="invalid-feedback">
                 {% for error in form.waxing.errors %}
                 <span>{{ error }}</span>
                 {% endfor %}
               </div>
               {% else %}
-              {{ form.waxing(class="form-control form-control-md") }}
+              {{ form.waxing(class="form-control form-control-md", value=name_to_update.waxing) }}
               {% endif %}
             </div>
           </div>

@@ -1,3 +1,16 @@
+// document.addEventListener("DOMContentLoaded", function () {
+//     document.body.addEventListener("click", function (event) {
+//         if (event.target.classList.contains("update-button")) {
+//             const userID = event.target.dataset.userId;
+//             const appointmentID = event.target.dataset.appointmentId;
+//             // Use both userID and appointmentID to send the request and update the specific appointment for the user.
+//         }
+//     });
+// });
+
+
+
+
 
 //  function submitForm() {
 //         const bookingForm = document.getElementById("Form");
