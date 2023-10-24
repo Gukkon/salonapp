@@ -135,3 +135,19 @@ def account():
     bookings = Booking.query.filter_by(user_id=user_id).all()
     flash_message = "Your treatment has been created successfully!"
     return render_template("account.html", title='Welcome', bookings=bookings, flash_message=flash_message,user_id=user_id)
+
+
+@app.route('/delete/<int:id>')
+def delete(id):
+    treat_to_delete = Booking.query.get_or_404(id)
+
+    try:
+        db.session.delete(treat_to_delete)
+        db.session.commit()
+
+        flash("Appointment Deleted Successfully")
+        return redirect(url_for('account'))
+    
+    except:
+        flash("Whoops, seems to be a problem. Try Again")
+        return render_template("account.html")

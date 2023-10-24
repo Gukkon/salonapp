@@ -5,8 +5,7 @@
     {% if flash_message %}
         {% for category, message in messages %}
             <div class="alert alert-success">
-                {{ flash_message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                {{ flash_message }} <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         {% endfor %}
     {% endif %}
@@ -33,12 +32,11 @@
 </div>
     <div class="backgrd sidebar" id="accounts">
         <div>
-            <table class="table table-hover table-bordered table-striped" >
+            <table class="table table-hover table-success table-bordered table-striped" >
                 {% for booking in bookings %}
                 <tbody class="bk-data">
                     <tr>
-                        <td>
-                            
+                        <td class="data">                           
                             <strong>Day:</strong> {{ booking.day }}<br>
                             <strong>Time Frame:</strong> {{ booking.timeFrame }}<br>
                             <strong>Time:</strong> {{ booking.time }}<br>
@@ -46,13 +44,9 @@
                             <strong>Facials:</strong> {{ booking.facials }}<br>
                             <strong>Hand & Foot:</strong> {{ booking.handFoot }}<br>
                             <strong>Waxing:</strong> {{ booking.waxing }}<br>
-                            <button><a href="{{ url_for('update', user_id=current_user.id, id=booking.id) }}">Update</a></button>
-
-                            
-
-
+                            <button class="btn btn-primary btn-sm"><a href="{{ url_for('update', user_id=current_user.id, id=booking.id) }}">Update</a></button>
+                            <button class="btn btn-secondary btn-sm"><a href="{{ url_for('delete', id=booking.id) }}">Delete</a></button>
                         </td>
-                        
                     </tr>
                     {% endfor %}
                     
