@@ -108,6 +108,11 @@ def update(user_id, id):
     name_to_update = Booking.query.filter_by(user_id=user_id, id=id).first_or_404()
     # appointment = Booking.query.get_or_404(id)
 
+    if request.method == "GET":  # This block handles the initial form rendering
+        form = BookingForm(obj=name_to_update)  # Initialize the form with name_to_update data
+    else:
+        form = BookingForm(request.form)
+
     if request.method == "POST":
         name_to_update.day = request.form['day']
         name_to_update.timeFrame = request.form['timeFrame']

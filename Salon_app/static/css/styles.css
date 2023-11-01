@@ -12,6 +12,8 @@ button a {
     text-decoration: none;
 }
 
+
+
 /* Error styles -----------------------------------------------------------------------------------------------------*/
 
 .error-con {
@@ -178,6 +180,9 @@ button {
     margin-right: 15px;
 }
 
+.data {
+    width: 320px;
+}
 
 /* Booking page -----------------------------------------------------------------------------------------*/
 
@@ -254,7 +259,6 @@ button {
     }
 
 
-
 }
 
 @media (max-width: 600px) {
@@ -289,22 +293,34 @@ button {
     }
 
     .main-acc-cont {
+        position: relative;
+        z-index: 1;
         height: 100vh;
         margin-top: 10px;
-        padding-bottom: 60px;
+        padding-bottom: 10px;
         display: grid;
         grid-template-columns: 90%;
         justify-content: center;
+        gap: 1em;
+    }
+
+    .foot {
+        position: relative;
+        z-index: 2;
     }
 
     .sidebar {
         grid-column: 1 / 1;
+        width: 80%;
+        margin: 0 auto;
     }
 
     .backgrd {
         border-radius: 20px;
         padding: 10px;
         font-family: 'cormorant-garamond';
+        text-align: center;
+        padding-top: 20px;
     }
 
     .bk-view a {
@@ -317,5 +333,14 @@ button {
         padding: 5px;
     }
 
+    .table {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+    }
+
+    .form-content {
+        width: 400px;
+    }
 
 }
