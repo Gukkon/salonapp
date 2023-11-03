@@ -13,6 +13,14 @@ app = Flask(__name__)
 # Secret Key
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 # Add Database
+
+
+
+
+
+
+
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 app.config['SESSION_COOKIE_SAMESITE'] = 'None'
 app.config['SESSION_COOKIE_SECURE'] = True
