@@ -3,7 +3,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
-import logging
+from decouple import config
 import psycopg2
 
 
@@ -14,22 +14,16 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 # Add Database
 
+# config.read_dotenv()
+
+DATABASE_URL = config('DATABASE_URL')
+
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
 
 
-
-
-
-
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 app.config['SESSION_COOKIE_SAMESITE'] = 'None'
 app.config['SESSION_COOKIE_SECURE'] = True
 
-# app.logger.setLevel(logging.DEBUG)
-# formatter = logging.Formatter('[%(asctime)s] [%(levelname)s] - %(message)s')
-# handler = logging.StreamHandler()
-# handler.setFormatter(formatter)
-# app.logger.addHandler(handler)
 
 # Initialize The Database Instance
 db = SQLAlchemy(app)
