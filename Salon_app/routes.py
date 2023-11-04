@@ -5,6 +5,7 @@ from Salon_app.forms import RegistrationForm, LoginForm, ValidationError, Bookin
 from Salon_app.models import User, Booking
 from flask_login import login_user, current_user, logout_user, login_required
 import sqlite3
+import psycopg2
 
 
 
@@ -19,7 +20,7 @@ def page_not_found(e):
     return render_template("500.html"), 500
 
 
-# All html webpages (SORT THE IF STATEMENT TO REDIRECT TO ACCOUNT PAGE!)
+# All html webpages 
 @app.route('/', methods=['GET','POST'])
 def index():
     if current_user.is_authenticated:
@@ -64,18 +65,10 @@ def logout():
 @login_required
 def bookings():
     form = BookingForm()
-    # print('METHOD:', request.method)
+    
     print('FORM', request.form)
     if request.method == 'POST':   
-        # input_value = request.form.get('terms')
-
-        # if input_value == 'y':
-        #     terms_boolean = True
-        # elif input_value == 'n':
-        #     terms_boolean = False
-        # else:
-        # # Handle invalid input or provide a default value as needed
-        #     terms_boolean = False
+        
         
         booking = Booking(
             day=request.form.get('day'),
@@ -104,12 +97,12 @@ def bookings():
 @app.route('/update/<int:user_id>/<int:id>', methods= ['GET','POST'])
 def update(user_id, id):
     form = BookingForm()
-    # name_to_update = Booking.query.filter_by(user_id=user_id, id=id).first_or_404()
+    
     name_to_update = Booking.query.filter_by(user_id=user_id, id=id).first_or_404()
-    # appointment = Booking.query.get_or_404(id)
+    
 
-    if request.method == "GET":  # This block handles the initial form rendering
-        form = BookingForm(obj=name_to_update)  # Initialize the form with name_to_update data
+    if request.method == "GET":  
+        form = BookingForm(obj=name_to_update)  
     else:
         form = BookingForm(request.form)
 

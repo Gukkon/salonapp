@@ -12,10 +12,8 @@ app = Flask(__name__)
 
 # Secret Key
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+
 # Add Database
-
-# config.read_dotenv()
-
 DATABASE_URL = config('DATABASE_URL')
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
