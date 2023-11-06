@@ -9,16 +9,14 @@
 1. [User Experience](#user-experience)
 2. [Design](#design)
 3. [Features](#features)
-4. [Accessibility](#accessibility)
-5. [Technologies Used](#technologies-used)
-6. [Deployment and Local Development](#deployment-and-local-development)
-7. [Testing](#testing)
-8. [Credits](#credits)
+4. [Technologies Used](#technologies-used)
+5. [Testing](#testing)
+6. [Credits](#credits)
 
 ## User Experience
 
 ### The Idea
-The objective of this app is to give the client an easy way to book treatments in the palm of their hands whilst they stay at the spa. 
+The objective of this app is to give the user an easy way to book treatments in the palm of their hands whilst they stay at the spa. 
 
 #### Site details include
 * Account registration page to sign up upon arrival
@@ -66,7 +64,7 @@ ADD A DATABASE SCHEMA
 
 ## Features
 
-The website is made up of 9 pages:
+The website is made up of 6 pages:
 
 * Log In
 * Registration
@@ -75,307 +73,157 @@ The website is made up of 9 pages:
 * Edit Booking Form (Change of Appointments)
 * Error Pages
 
+The background image used for all the site is just a simple generic salon image taken from unplash.
 
-### The Log In page
+![Background Image](Salon_app/static/images/spabackground2.jpeg)
 
-The index page has the following features:
+### Log In page
 
-If the user is not signed in, they will see the following buttons:
+The log in page is the main page clients will see first. They have a welcome message that introduces them to the spa and explains what the app allows them to do. 
 
-   * Log in button, which takes the user to the log in page
 
-   ![Add plant button]()
+   ![Log In Page](Salon_app/static/images/readme/mainpagelogin.png)
 
-   * Register button, which takes the user to the registration page
+   Also on the page is:
 
-   ![Add plant button]()
+   * Navbar with spa name
+   * Log in link button which acts as a home page link
+   * Register link button that sends the user to a form where they can register to the app
+   * Footer that contains copyright information
 
-If the user is signed in, they will see the following buttons:
+#### Log In Form
 
-   * Add button, which takes the user to the "Add Plant" page.
+The log in form contains two input types where clients enter their username and password to log into their account. There are validators that will not allow the clients to log in if no account has been created.
 
-   ![Add plant button]()
+There is also a remember me checkbox that allows the user to save their username and password to save inputting the information again.
 
-   * View your plants button, which takes the user to their plants page. 
-
-   ![View your plants button]()
+A sign up link is also on the page where the user has another way of linking to the registration page.
+ 
 
 ### Register
 
-The registration page has the following features:
+The registration page allows users to sign up to the application to then allow them to access their account and book treatments.
 
-* A form that takes the users name, username, email address and password, and sends this to the database. 
+The form takes the clients: 
 
-   ![User form]()
+* Name
+* Email
+* Chosen username
+* Password
+
+
+![Registration Form](Salon_app/static/images/readme/registerform.png)
+
+* The form also contains a validation system where input fields will require a certain amount of letters to allow registration to continue. This is for the Name, Email, Username and Password fields. 
 
 * The password is hidden from view and confirmed using two password fields. 
+Form validation is set up for all fields and will display if the user leaves any fields blank, or if their passwords do not match.
 
-   ![Password fields]()
+* A submit button to submit the form. When the form is submitted, this creates a user account, and takes the user to their account page
 
-* Form validation is set up for all fields. This appears if the user leaves any fields blank, or if their passwords do not match.
+* A flash message appears on the next page when the user has created a new account successfully or unsuccessfully
 
-   ![Form validation]()
 
-* Button to submit the form. When the form is submitted, this creates a user account, and takes the user to the login page.
+### Account Page
 
-   ![Submit button]()
+![Login form](Salon_app/static/images/readme/accountpage.png)
 
-* A flash message appears on the next page when the user has created a new account successfully. 
+The account page is main section of the clients information regarding log information and treatment appointments. 
 
-   ![Flash message]()
+As you can see the navbar has changed with new links to press. These are:
 
-### Log in
+* Account - This acts as a back button to the user account page if the user wishes to return there
 
-The log in page has the following features:
+* Book Now - This sends the user to the page where they can book their appointments for the duration of their stay
 
-* A form that takes the users username and password and compares these to those stored in the database to verify the users identify. 
+* Log out - This allows the user to log out the application
 
-   ![Login form]()
+#### Welcome Message
 
-* Form validation is set up for all fields. This appears if the user leaves any fields blank. 
+![Welcome message](Salon_app/static/images/readme/welcomemsg.png)
 
-   ![Login form vaidation]()
+This welcome message is just a visual display of information about the spa and what their information is used for. The information is pretty vague but it is only displayed like this so we get an understanding of what could be placed there in the future. 
 
-* Button to submit the form. When the form is submitted, this authenticates the user, and takes them to their plants page.
+The username is displayed in the message via Jinja3 language that pulls the clients username from the database and displays it. It gives a more personal feel to the account and can enhance the user experience.
 
-   ![Submit button]()
+### Account Info
 
-* A flash message appears on the next page when the user has logged in successfully. 
+![Account Info](Salon_app/static/images/readme/accountinfo.png)
 
-   ![Flash message]()
+Here you can see the clients information and includes: 
 
-### My plants 
+* Customer ID
+* Name
+* Email
+* Date Join
 
-This page has the following features:
+This is all pulled again from the database via Jinja3 language top display to the user information that is required if needed. 
+ 
+### Treatment Section
 
-* A button that takes you to the Add Plant page
+![Flash message](Salon_app/static/images/readme/appointments.png)
 
-   ![Add plant button]()
+In this section you can see that the user has booked two appointments and is now visible on their account page via Jinja3 language that is again pulled from the database to then allow the user to see and keep track of their appointments. 
 
-* Self populating plant divs that pull your saved plants data from the database and displays them. These are automatically ordered by the date the plants next need to be watered, so that the plants most in need of watering are at the top. Plants that need watering also have red text to alert the user. The tense of the text also changes depending on whether you needed to have watered the plants in the past, need to water them today, or if you need to water them in the future.
+The appointment contains:
 
-   ![Self populating plant divs]()
+* Day - The day the treatment is on
+* Time Frame - Time of day (Morning, Afternoon, Evening)
+* Time - The actual time of the treatment
+* Massage - The treatment under the massage tab and this will be the same for the other selections
+* Facials
+* Hand and Foot
+* Waxing
 
-* Each plant has its own set of buttons which will perform actions on that particular plant:
+### Update and Delete
 
-   * The "see more" button takes the use to a page dedicated to that particular plant, where they will be able to see the plant's notes.
+Within the appointment details you can also see an update button with a delete button. Clicking the update button allows the user to update their current appointment giving them the chance to change any of the above details. The delete button deletes the current appointment selected.
 
-      ![See more button]()
-   
-   * The edit button takes the user to a page where they can edit the details of the plant.
+### Booking Form
 
-      ![Edit plant button]()
-   
-   * The "delete" button displays a modal which confirms that the user would like to delete the plant in question.
+![Booking Form](Salon_app/static/images/readme/bookingform.png)
 
-      ![Delete plant button]()
-      
-* The delete modal confirms with the user that they would like to delete their plant
+The booking form is where the user can book their treatments. The form contains drop down menus for choosing the majority of what is needed but there is also a text input area where the user will have to select an actual time they want to have the treatment within the time frame selected. There is also a checkbox at the bottom of the form where the user will have to select to confirm the Term and conditions of the spa. This also acts as a validation stage as if this was not selected, the form would not submit via the submit button which is at the bottom.
 
-   ![Delete modal]()
+### Update Form
 
-   This modal has two buttons.
+The update form is the exact same as the booking form with the only difference being the input fields are already populated with the users current selections to help them determine what they are changing from.
 
-   * One button will hide the modal
 
-      ![Close modal button]()
+### Flash Messages
 
-   * The other button will delete the plant and then hide the modal
+I have flash messages for many areas of successful or unsuccessful input of data. Green back ground indicates a success whereas a red one represents that something has gone wrong. Below are just a couple of them. 
 
-      ![Delete button]()
+![Log Out](Salon_app/static/images/readme/logout.png)
 
-### Add plant
 
-This page has the following features:
+![Form validation](Salon_app/static/images/readme/flashmsgapt.png)
 
-* A form to add a new plant to the database. It asks the user for these details of the plant - Common Name / Latin Name / Watering Interval / Date Last Watered / Notes.
 
-   ![Add plant form]()
+## Accessibility
 
-   This form includes:
+I have been mindful during coding to ensure that the website is as accessible as possible. I have achieved this by:
 
-   * Validation warnings when required fields (Common Name, Latin Name, Watering Interval and Date Last Watered) are not completed. Form validation also alerts the user if they type in a watering interval that is less than 1, or type in a last watered date that is in the past. 
+* Using semantic HTML.
+* Guaranteeing adequate colour contrast throughout the site.
 
-      ![Form validation]()
+## Technologies Used
 
-   * A notes section with a variety of different formatting abilities
-   
-      ![Notes formatting options]()
+### Languages Used
 
-   * A back button that takes the user to their "My Plants" page
+HTML5, CSS3, Python, Jinja3 were used to create this application.
 
-      ![Back button]()
+### Frameworks, Libraries & Programs Used
 
-   * A submit button that submits the form data to the database and redirects the user to their "My Plants" page. 
-
-      ![Submit button]()
-   
-   * Tooltips that appear when the user hovers their mouse over each field label. (They do not appear all at the same time. The below is meant as a quick visual reference only.) 
-
-      ![Tooltips]()
-
-      ![Tooltips]()
-
-   * A flash message that appear on the page after the user has successfully added a plant
-
-      ![Flash message]()
-
-### Plant profile
-
-This page has the following features:
-
-* A div that contains all the information of the plant that the user previously selected. This includes the watering text appearing red if the user needs to water their plant.
-
-   ![Plant profile]() 
-
-   * Edit button, which takes the user to the plant edit page.
-
-      ![Edit button]()
-
-   * Back button, which takes the user to my plants page. 
-
-      ![Back button]()
-
-   * Delete button, which triggers the delete modal.
-
-      ![Delete button]()
-
-   * Delete modal, which confirms that the user would like to delete the plant. 
-
-      ![Delete modal]()
-
-      * This modal has the following features:
-
-         * Delete button, which will delete the plant and return the user to the My Plants page. 
-
-            ![Delete button]()
-         
-         * Close button, which will close the delete modal without deleting the plant. 
-
-            ![Close modal button]()
-
-### Edit plants
-
-This page has the following features:
-
-* A pre-populated form containing all the details of the plant the user would like to edit. 
-
-   ![Edit plant form]()
-
-   This form includes:
-
-   * The same validation that has been previously mentioned for the Add Plant page. 
-
-      ![Form validation]()
-   
-   * Back button, which takes the user back to the My Plants page. 
-
-      ![Back button]()
-
-   * Save button, which saves the edited data to the database, and returns the user to the plant profile page. 
-
-      ![Save button]()
-   
-   * Tooltips that appear when the user hovers their mouse over each field label. (They do not appear all at the same time. The below is meant as a quick visual reference only.) 
-
-      ![Tooltips]()
-
-      ![Tooltips]()
-
-   * A flash message that appear on the page after the user has successfully added a plant
-
-      ![Flash message]()
-
-### Account dashboard
-
-This page has the following features:
-
-* The details that the user added during registration, apart from their password. 
-
-   ![User details]()
-
-* Edit button, which takes users to the edit account page. 
-
-   ![Edit button]()
-
-* Delete button, which opens a delete modal.
-
-   ![Delete button]()
-
-* Delete modal, which confirms with the user that they want to delete their account.
-
-   ![Delete user modal]()
-
-   This modal has the following features:
-
-   * Delete button, which triggers the deleting of the user, and all the plants associated with them. Then redirects them to the registration page. 
-
-      ![Delete button]()
-
-   * Close button, which closes the modal without deleting the user account. 
-
-      ![Close modal]()
-
-### Edit account
-
-This page has the following features:
-
-* Pre-populated information about the user. 
-
-   ![Edit user form](Salon_app/static/images/showcaseimg.jpg))
-
-* Validation alerts that require the user to make sure all fields are filled in.
-
-   ![Edit user form]()
-
-* Save button, which saves the updated user information, and redirects the user to their account.
-
-   ![Submit button]()
-
-* Delete button, which triggers the delete modal.
-
-   ![Delete button]()
-
-* Delete modal, which confirms with the user that they want to delete their account.
-
-   ![Delete user modal]()
-
-   This modal has the following features:
-
-   * Delete button, which triggers the deleting of the user, and all the plants associated with them. Then redirects them to the registration page. 
-
-      ![Delete button]()
-
-   * Close button, which closes the modal without deleting the user account. 
-
-      ![Close modal]()
-
-* Flash message on the next page to let the user know that they have successfully updated an account.
-
-   ![Flash message]()
-
-### 404 page
-
-This page has the following features:
-
-* Information to show the user that the page they were looking for was not found.
-
-   ![404]()
-
-### All pages have the following features
-
-This page has the following features:
-
-* Navigation bar, which turns into a hamburger menu on narrower screens. The links included go to the register, login, add a plant and my plants pages. Clicking on "Plant Planner" of the calendar plant icon will also take the user to the home page.
-
-   ![Navbar]()
-
-   ![Narrow Navbar]()
-
-* Footer, which includes working buttons to the home pages of Instagram, twitter, and Facebook.
-
-   ![Footer]()
-
-* Page title and information section, which changes depending on which page the user is on. 
-
-   ![Page title and information]()
+* **Google Fonts** - To include my two fonts that I used.
+* **VSCode** - This was used as my IDE top create the application.
+* **GitHub** - This was used to help save my work and used for version control.
+* **Snip and Sketch** - This was used for uploading images.
+* **FireFox Dev Tools** - This was used to test my code out and used to display my application through the browser.
+* **Am I Responsive?** - This was used to show my application on a range of devices.
+* **SQLAlchemy** - This was used to connect Python code with the database. 
+* **Flask** - I used this framework to build the website.
+* **Bootstrap 5** - This was used to help build the fundamentals of the application in regards to CSS3.
+* **PostgreSQL** - This was used to help keep hold of the data of the user..
+* **ElephantSQL** - was used to host the database.
+* **Heroku** - was used to deploy the website.
