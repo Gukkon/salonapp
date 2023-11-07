@@ -223,7 +223,69 @@ HTML5, CSS3, Python, Jinja3 were used to create this application.
 * **Am I Responsive?** - This was used to show my application on a range of devices.
 * **SQLAlchemy** - This was used to connect Python code with the database. 
 * **Flask** - I used this framework to build the website.
+* **Flexbox** - This was used to help position elements easier.
+* **CSS Grid** - This was used to help position elements easier.
 * **Bootstrap 5** - This was used to help build the fundamentals of the application in regards to CSS3.
 * **PostgreSQL** - This was used to help keep hold of the data of the user..
 * **ElephantSQL** - was used to host the database.
 * **Heroku** - was used to deploy the website.
+
+## Testing
+
+I carried out testing throughout my project with it being manual testing by inputting values to see if they were getting collected by the database to causing errors within the forms for testing validation rules. FireFox Dev Tools were used as well to help check mainly HTML and CSS code.
+
+Automatic testing was also used with different software such as W3C validator, CSS validator and Python Checker.
+
+## W3C Validator - HTML
+
+* Results from the [Login Page](Salon_app/static/images/readme/logincheck.png) page check: user not logged in.
+* Results from the [Account](Salon_app/static/images/readme/accountcheck.png) page check: user logged in.
+* Results from the [Booking Form](Salon_app/static/images/readme/bookingformcheck.png) page check.
+* Results from the [Update Page](Salon_app/static/images/readme/updateformcheck.png) page check.
+* Results from the [Registration Form](Salon_app/static/images/readme/registercheck.png) page check.
+
+
+## CSS Validator
+
+* Results from the [CSS Check](Salon_app/static/images/readme/CSSchecks.png)
+
+## Python Validator
+
+* Results from the [models.py](Salon_app/static/images/readme/modelscheck.png) check.
+* Results from the [routes.py](Salon_app/static/images/readme/routecheck.png) check.
+* Results from the [forms.py](Salon_app/static/images/readme/formscheck.png) check.
+* Results from the [init.py](Salon_app/static/images/readme/initcheck.png) check.
+* Results from the [run.py](Salon_app/static/images/readme/runcheck.png) check.
+
+## Manual Testing
+
+### Links
+All links tested and worked.
+
+### Buttons
+All buttons clicked and tested and worked.
+
+### Forms
+Booking, registration and update form worked fine with all validation errors working along with values being sent to database and update form holding onto current values so the user knows what was there before.
+
+### Database
+SQLite3 was used to start off with to test to see if data was being sent via the registration form for new users and the booking form creating appointments. SQLiteAdmin was also used to visually see the data being stored, edited and deleted and proved that it was working once the form was submitted.
+
+As the data was being sent correctly, I changed to Postgresql as this was a more robust object-relational database management system and would then be used to link up to Heroku for final deployment.
+
+## Credits
+
+Various websites and videos were used to help create this application and are listed below.
+
+* [Codemy's Flask Blog walkthrough](https://www.youtube.com/watch?v=0Qxtt4veJIc&list=PLCC34OHNcOtolz2Vd9ZSeSXWc8Bq23yEz&index=1) - Was used heavily to build the foundations of the application.
+* [Corey Schafer Flask walkthrough](https://www.youtube.com/watch?v=MwZwr5Tvyxo&list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH) - Was used to help create a database via the terminal and create user profiles.
+* [BootStrap](https://www.youtube.com/watch?v=MwZwr5Tvyxo&list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH) - Was used to create the Navbar and footer for my site.
+* [Flask Documentation](https://flask.palletsprojects.com/en/3.0.x/) - Was used to help understand how flask actually works in certain situations such as flash messages and uploading data to SQLite
+* [Jinja](https://jinja.palletsprojects.com/en/3.1.x/) - Like Flask, this was used to help get a better understanding of the Jinja syntax.
+* [W3Schools](https://www.w3schools.com/) - Used on occasions to help with page layout and certain CSS tips and tricks.
+* [StackOverflow](https://stackoverflow.com/) - Used heavily for coding such as form creation with flask and jinja, displaying the data from the form onto the account page and understanding why data was not being sent to the database.
+* [W3Schools](https://www.w3schools.com/) - Used on occasions to help with page layout and certain CSS tips and tricks.
+* [Unsplash](https://unsplash.com/) - Was used for my background image.
+* [Google Fonts](https://fonts.google.com) - Was used to collect my fonts that were used.
+* [FireFox](https://www.mozilla.org/en-GB/firefox/browsers/) - Was used for my chosen browser
+* [VSCode](https://code.visualstudio.com/) - Was the IDE that I used to create my application

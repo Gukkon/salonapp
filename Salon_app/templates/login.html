@@ -1,6 +1,6 @@
 {% block content %}
 
-    <form class="log-form needs-validation" method="POST" action="" novalidate>
+    <form class="log-form needs-validation" method="POST" novalidate>
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
             <legend class="mb-4">Log In</legend>
@@ -46,28 +46,5 @@
     </div>
 
 
-
-
-
-
-
-
-
-
-
-    <!-- <div class="log-form">
-        <h2>Please Log In</h2>
-        <form action="" method="POST">
-            <input type="name" name="name" placeholder="Email">
-        <br>
-            <input type="password" name="password" placeholder="Password">
-        <br>
-            <input class="btn btn-dark" type="submit" placeholder="submit" value="Log In">
-        <br>
-        </form>
-
-        <p class="reg-link">Not registered yet? Please <a href="{{ url_for('register') }}">REGISTER HERE</a> to begin</p>
-
-    </div> -->
 
 {% endblock %}

@@ -1,7 +1,7 @@
 import os
-from flask import render_template, flash, redirect, url_for, request, current_app, Response
+from flask import render_template, flash, redirect, url_for, request
 from Salon_app import app, db, bcrypt
-from Salon_app.forms import RegistrationForm, LoginForm, ValidationError, BookingForm
+from Salon_app.forms import RegistrationForm, LoginForm, BookingForm
 from Salon_app.models import User, Booking
 from flask_login import login_user, current_user, logout_user, login_required
 import sqlite3
@@ -9,7 +9,7 @@ import psycopg2
 
 
 
-# Error Pages
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template("404.html"), 404
@@ -20,7 +20,7 @@ def page_not_found(e):
     return render_template("500.html"), 500
 
 
-# All html webpages 
+
 @app.route('/', methods=['GET','POST'])
 def index():
     if current_user.is_authenticated:
