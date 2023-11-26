@@ -45,12 +45,8 @@ The objective of this app is to give the user an easy way to book treatments in 
 
 ## Design
 
-### Early Design Phases / Wireframes
-The Wireframes were made via  [Paint.net]
-
-(Add wireframes with explaination)
-
-### Colour scheme
+### Layout 
+I wanted a simplistic layout where there isn't too much happening on each screen so that the user can clearly see where they need to look and where the vital information is, for example their chosen appointments. 
 
 ### Typography
 I wanted a plain and simple font so it was easy to read. Google Fonts was used to import a couple of fonts that I used and they were:
@@ -59,8 +55,9 @@ I wanted a plain and simple font so it was easy to read. Google Fonts was used t
 * Tangerine - Used on the home page for a fancier look to the heading
 
 ### Database Schema
+I chose to create a relational database as the user will have to be connected to their own booking appointment. The user will create ea login via the registration form inputting their full name, along with their email and chosen username and password. The booking column at the end will link the user database with the booking database that will contain all what is needed to book the appointment, along with the user ID column that is the foreign key linking the user to that booking ID. 
 
-ADD A DATABASE SCHEMA
+![Schema](Salon_app/static/images/readme/schema.jpg)
 
 ## Features
 
