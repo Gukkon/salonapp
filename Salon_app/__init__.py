@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from decouple import config
+
 if os.path.exists("env.py"):
     import env  # noqa
 
@@ -23,9 +24,9 @@ else:
         uri = uri.replace("postgres://", "postgresql://", 1)
     app.config["SQLALCHEMY_DATABASE_URI"] = uri
 # Add Database
-DATABASE_URL = config('DATABASE_URL')
+# DATABASE_URL = config('DATABASE_URL')
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
 
 
 app.config['SESSION_COOKIE_SAMESITE'] = 'None'
