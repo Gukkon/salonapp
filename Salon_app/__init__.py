@@ -4,7 +4,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from decouple import config
-import psycopg2
+if os.path.exists("env.py"):
+    import env  # noqa
 
 
 
@@ -13,6 +14,14 @@ app = Flask(__name__)
 # Secret Key
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
+
+if os.environ.get("DEVELOPMENT") == "True":
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URL")
+else:
+    uri = os.environ.get("DATABASE_URL")
+    if uri.startswith("postgres://"):
+        uri = uri.replace("postgres://", "postgresql://", 1)
+    app.config["SQLALCHEMY_DATABASE_URI"] = uri
 # Add Database
 DATABASE_URL = config('DATABASE_URL')
 
