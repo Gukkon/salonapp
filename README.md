@@ -1,5 +1,7 @@
 # The Personal Salon App
 
+![Schema](Salon_app/static/images/readme/responsive.png)
+
  This web application has been created so that clients can book their treatments on any particular day and time they want. 
 
  [View the live project here](https://)
